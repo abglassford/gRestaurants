@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
     table.string('street').notNullable();
     table.string('city').notNullable();
     table.string('state').notNullable();
-    table.integer('zip').notNullable();
+    table.string('zip').notNullable();
     table.string('images').notNullable();
     table.text('description').notNullable();
   })
