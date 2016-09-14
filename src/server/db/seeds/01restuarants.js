@@ -8,7 +8,18 @@ exports.seed = function(knex, Promise) {
         // Inserts seed entries
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Turkish',
+          street: faker.address.streetName(),
+          city: faker.address.cityPrefix(),
+          state: faker.address.stateAbbr(),
+          zip: faker.address.zipCode(),
+          images: faker.image.imageUrl(),
+          description: faker.company.catchPhraseDescriptor()
+        })
+        ,
+        knex('restaurants').insert({
+          restaurant_name: faker.company.companyName(),
+          style: 'Tibetan',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -18,7 +29,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Sudanese',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -28,7 +39,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Basque',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -38,7 +49,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Basque',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -48,7 +59,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Swiss',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -58,7 +69,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Senegalese',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -68,7 +79,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Senegalese',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -78,7 +89,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Russian',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -88,7 +99,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Slovak',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -98,7 +109,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Senegalese',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -108,7 +119,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Russian',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -118,7 +129,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Russian',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -128,7 +139,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Slovak',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -138,7 +149,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Russian',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -148,7 +159,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Spanish',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -158,7 +169,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Rwandan',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -168,7 +179,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Spanish',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -178,7 +189,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Rwandan',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
@@ -188,17 +199,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
-          street: faker.address.streetName(),
-          city: faker.address.cityPrefix(),
-          state: faker.address.stateAbbr(),
-          zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
-          description: faker.company.catchPhraseDescriptor()
-        }),
-        knex('restaurants').insert({
-          restaurant_name: faker.company.companyName(),
-          style: faker.company.bsAdjective(),
+          style: 'Serbian',
           street: faker.address.streetName(),
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
