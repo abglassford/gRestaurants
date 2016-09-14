@@ -15,4 +15,26 @@
       <li><a href="/signup">Sign Up</a></li>
     </ul>
   </nav>  </div>
+  <table>
+    <tr>
+      <th>
+        <td>Column1</td>
+        <td>Column2</td>
+        <td>Column3</td>
+      </th>
+    </tr>
+  {%for restaurant in restaurants%}
+    <tr>
+      <td>
+        <div class="">
+          <h1>name</h1>
+          <img src="" alt="image" />
+          <h3>style</h3>
+          <h4>location</h4>
+          <h4>rating</h4>
+      </div>
+    </td>
+    </tr>
+  {%endfor%}
+</table>
 {% endblock %}
