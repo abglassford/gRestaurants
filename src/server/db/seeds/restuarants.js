@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -23,7 +23,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -33,7 +33,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -43,7 +43,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -53,7 +53,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -63,7 +63,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -73,7 +73,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -83,7 +83,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -93,7 +93,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -103,7 +103,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -113,7 +113,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -123,7 +123,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -133,7 +133,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -143,7 +143,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -153,7 +153,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -163,7 +163,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -173,7 +173,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -183,7 +183,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -193,7 +193,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         }),
         knex('restaurants').insert({
@@ -203,7 +203,7 @@ exports.seed = function(knex, Promise) {
           city: faker.address.cityPrefix(),
           state: faker.address.stateAbbr(),
           zip: faker.address.zipCode(),
-          images: faker.image.imageUrl(),
+          images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
         })
       ]);
