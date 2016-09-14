@@ -6,7 +6,7 @@ router.get('/', function (req, res, next) {
   const renderObject = {};
   knex('restaurants')
   .then(data => {
-    let renderData = data.slice(0, 9)
+    let renderData = data.slice(0, 9);
     renderData.forEach(object => {
       object.stringified = JSON.stringify(object);
     });
@@ -17,10 +17,17 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
-  const id = req.params.id
+  const id = req.params.id;
   const renderObject = {};
     renderObject.title = 'Restaurants';
-    res.json(renderObject)
+    res.render(renderObject);
   });
 
+//Ryan Pando routes
+
+//
+
+//Alex Nye Routes
+
+//
 module.exports = router;
