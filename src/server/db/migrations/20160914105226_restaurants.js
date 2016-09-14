@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
     table.string('zip').notNullable();
     table.string('images').notNullable();
     table.text('description').notNullable();
-  })
+  });
 };
 
 exports.down = function(knex, Promise) {
