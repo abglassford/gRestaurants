@@ -14,11 +14,11 @@ exports.seed = (knex, Promise) => {
           text: faker.lorem.sentences(),
           user_id: maxUser-i,
           restaurant_id: maxRestaurant-i
-        })
+        });
         reviews.push(promise);
       }
 
-      return Promise.all(reviews)
-    })
-  })
-}
+      return Promise.all(reviews);
+    });
+  });
+};

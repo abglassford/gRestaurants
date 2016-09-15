@@ -13,15 +13,26 @@ router.get('/', function (req, res, next) {
     renderObject.data = renderData;
     renderObject.title = 'Restaurants';
     res.render('restaurants', renderObject);
+  }).catch(err => {
+    next(err);
   });
 });
 
 router.get('/:id', function (req, res, next) {
-  const id = req.params.id;
   const renderObject = {};
-    renderObject.title = 'Restaurants';
-    res.render(renderObject);
+  const restaurantId = req.params.id;
+  renderObject.title = 'Restaurants';
+  knex('restaurants')
+  .where('id', restaurantId)
+  .then((data) => {
+    renderObject.data = data;
+    res.render('restaurant', renderObject);
+  })
+  .catch(err => {
+    next(err);
   });
+});
+
 
 //Ryan Pando routes
 
