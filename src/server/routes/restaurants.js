@@ -38,6 +38,42 @@ router.get('/:id', function (req, res, next) {
 //
 
 //Alex Nye Routes
+router.get('/new', (req, res, next) => {
+  const renderObject = {};
+  res.render('new_restaurant', renderObject);
+});
+
+router.post('/new', (req, res, next) => {
+  // grab the values to add to the db via req.body
+  const restaurant_name = req.body.name;
+  const city = req.body.city;
+  const state = req.body.state;
+  const style = req.body.cuisine;
+  const rating = req.body.rating;
+  const images = req.body.images;
+  const description = req.body.description;
+  const zip = req.body.zip;
+  const street = req.body.street;
+  // add values to database
+  knex('restaurants').insert({
+    restaurant_name: restaurant_name,
+    city: city,
+    state: state,
+    style: style,
+    //rating: rating,
+    images: images,
+    description: description,
+    zip: zip,
+    street: street
+  })
+  .then((results) => {
+    // redirect user
+    res.redirect('/');
+  })
+  .catch((err) => {
+    return next(err);
+  });
+});
 
 //
 module.exports = router;

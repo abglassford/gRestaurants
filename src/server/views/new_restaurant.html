@@ -6,7 +6,7 @@
 
   <div class="container col-xs-6">
     <h1>{{title}}</h1>
-    <form action="/restaurants//reviews/" method="POST">
+    <form action="/restaurants/new" method="POST">
       <div class="form-group">
         <div class="row">
           <label for="rating">Logged In As:</label>
@@ -16,15 +16,24 @@
       <div class="form-group">
         <div class="row">
           <label for="restaurantName"><h4>Name</h4></label>
-          <input type="text" name="name" class="form-control" value="" placeholder="Name" min="1">
+          <input type="text" name="name" id="restaurantName" class="form-control" placeholder="Name" min="1">
         </div>
         <div class="row">
           <label for="location"><h4>Location</h4></label>
-          <input type="text" name="city" class="form-control" value="" placeholder="City">
+          <input type="text" name="city" id="location" class="form-control" placeholder="City">
+        </div>
+        <div class="row">
+          <label for="zip"><h4>Zip</h4></label>
+          <input type="text" name="zip" id="zip" class="form-control" placeholder="Zip">
+        </div>
+        <div class="row">
+          <label for="street"><h4>Street</h4></label>
+          <input type="text" name="street" id="street" class="form-control" placeholder="street">
         </div>
         <br>
         <div class="row">
-          <select>
+          <label for="state"><h4>State</h4></label>
+          <select name="state" id="state">
           	<option value="AL">Alabama</option>
           	<option value="AK">Alaska</option>
           	<option value="AZ">Arizona</option>
@@ -83,7 +92,7 @@
           <label for="cuisine"><h4>Cuisine</h4></label>
         </div>
         <div class="row">
-          <select class="" name="">
+          <select class="" name="cuisine" id="cuisine">
             <option value="option">Afghan</option>
             <option value="option">Albanian</option>
             <option value="option">Algerian</option>
@@ -308,7 +317,7 @@
           </div>
         </div>
         <div class="row">
-          <h4>Image</h4><input type="url" name="images" class="form-control form-inline" value="" placeholder="URL">
+          <h4>Image</h4><input type="url" name="images" class="form-control form-inline" placeholder="URL">
         </div>
         <div class="form-group">
           <div class="row">
