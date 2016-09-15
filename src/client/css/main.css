@@ -47,6 +47,7 @@ nav .wrapper {
 }
 
 footer {
+  clear: both;
   background-color: black;
   display: block;
   margin-top: 5rem;

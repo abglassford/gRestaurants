@@ -10,12 +10,17 @@ router.get('/', (req, res, next) => {
   knex('restaurants')
   .then(data => {
     for (var i = 0; i < 3; i++) {
-      featureArray.push(data[i]);
+      featureArray.push(data[getRandomInteger(data.length)]);
     }
     renderObject.data = featureArray;
     renderObject.title = 'gRestaurants';
     res.render('index', renderObject);
   }).catch(err => next(err));
 });
+
+function getRandomInteger(max) {
+  max = Math.floor(max);
+  return Math.floor(Math.random() * max);
+}
 
 module.exports = router;

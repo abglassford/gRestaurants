@@ -1,19 +1,16 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #blue;
+.pageLogo img {
+  width:100%;
+  padding:0 5%
 }
+
 .restaurantDiv{
   height: 180px;
 }
 
 .restImg {
   height: 100px;
-}
-
-.pageLogo img {
-  width:100%
 }
