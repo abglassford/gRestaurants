@@ -10,11 +10,11 @@ exports.seed = (knex, Promise) => {
           first_name: faker.name.firstName(),
           last_name: faker.name.lastName(),
           position: faker.hacker.verb(),
-          restaurant_id: maxRestaurant-i
+          restaurant_id: maxRestaurant - i
         });
         reviews.push(promise);
       }
 
       return Promise.all(reviews);
     });
-};
+  };

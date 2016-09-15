@@ -33,7 +33,6 @@ router.get('/:id', function (req, res, next) {
   });
 });
 
-
 //Ryan Pando routes
 
 //
