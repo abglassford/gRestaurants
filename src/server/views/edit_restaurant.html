@@ -1,16 +1,12 @@
 {% extends "_base.html" %}
 
-{% block css %}
- <link rel="stylesheet" href="/css/new_restaurant.css">
-{% endblock %}
-
 {% block title %}{% endblock %}
 
 {% block content %}
 
   <div class="container col-xs-6">
-    <h1>{{title}}</h1>
-    <form action="/restaurants/new" method="POST">
+    <h1>Edit Restaurant</h1>
+    <form id="edit_restaurant">
       <div class="form-group">
         <div class="row">
           <label for="rating">Logged In As:</label>
@@ -20,24 +16,25 @@
       <div class="form-group">
         <div class="row">
           <label for="restaurantName"><h4>Name</h4></label>
-          <input type="text" name="name" id="restaurantName" class="form-control" placeholder="Name" min="1">
+          <input type="text" name="name" id="restaurantName" class="form-control" value="{{data[0].restaurant_name}}" min="1">
         </div>
         <div class="row">
           <label for="location"><h4>Location</h4></label>
-          <input type="text" name="city" id="location" class="form-control" placeholder="City">
+          <input type="text" name="city" id="location" class="form-control" value="{{data[0].city}}">
         </div>
         <div class="row">
           <label for="zip"><h4>Zip</h4></label>
-          <input type="text" name="zip" id="zip" class="form-control" placeholder="Zip">
+          <input type="text" name="zip" id="zip" class="form-control" value="{{data[0].zip}}">
         </div>
         <div class="row">
           <label for="street"><h4>Street</h4></label>
-          <input type="text" name="street" id="street" class="form-control" placeholder="street">
+          <input type="text" name="street" id="street" class="form-control" value="{{data[0].street}}">
         </div>
         <br>
         <div class="row">
           <label for="state"><h4>State</h4></label>
           <select name="state" id="state">
+            <option value="{{data[0].state}}">{{data[0].state}}</option>
           	<option value="AL">Alabama</option>
           	<option value="AK">Alaska</option>
           	<option value="AZ">Arizona</option>
@@ -96,7 +93,8 @@
           <label for="cuisine"><h4>Cuisine</h4></label>
         </div>
         <div class="row">
-          <select class="" name="cuisine" id="cuisine">
+          <select name="cuisine" id="cuisine">
+            <option value="{{data[0].style}}">{{data[0].style}}</option>
             <option value="option">Afghan</option>
             <option value="option">Albanian</option>
             <option value="option">Algerian</option>
@@ -321,20 +319,57 @@
           </div> -->
         </div>
         <div class="row">
-          <h4>Image</h4><input type="url" name="images" class="form-control form-inline" placeholder="URL">
+          <h4>Image</h4><input type="url" name="images" id="images" class="form-control form-inline" value="{{data[0].images}}">
         </div>
         <div class="form-group">
           <div class="row">
             <label for="description">Short Bio</label>
-            <textarea rows="5" class="form-control col-xs-6" name="description" id="description"></textarea>
+            <textarea rows="5" class="form-control col-xs-6" name="description" id="description">{{data[0].description}}</textarea>
           </div>
         </div>
 
-        <input type="hidden" name="restaurant_id" value="">
-        <input type="hidden" name="user_id" value="">
+        <input type="hidden" id ="restaurant_id" name="restaurant_id" value="{{data[0].id}}">
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
     </div>
 
+<script>
+    $(document).on('submit', '#edit_restaurant', function(event) {
+      event.preventDefault();
+      const id = $('#restaurant_id').val();
+      const restaurant_name = $('#restaurantName').val();
+      const city = $('#city').val();
+      const state = $('#state').val();
+      const style = $('#cuisine').val();
+      const images = $('#images').val();
+      const description = $('#description').val();
+      const zip = $('#zip').val();
+      const street = $('#street').val();
+      const payload = {
+        id: id,
+        restaurant_name: restaurant_name,
+        city: city,
+        state: state,
+        style: style,
+        images: images,
+        description: description,
+        zip: zip,
+        street: street
+      };
+      $.ajax({
+        type: 'PUT',
+        url: `/restaurants/updateSubmit/${id}`,
+        data: payload
+      })
+      .done((data) => {
+        //$('#myModal').modal('toggle');
+        location.reload();
+        console.log(data);
+      })
+      .fail((err) => {
+        console.log(err);
+      });
+    });
+</script>
 
 {% endblock %}

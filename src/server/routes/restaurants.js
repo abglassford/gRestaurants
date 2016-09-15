@@ -53,9 +53,68 @@ router.get('/:id', function (req, res, next) {
 
 //Ryan Pando routes
 
-//
-
 //Alex Nye Routes
+router.get('/update/:id', function (req, res, next) {
+  const renderObject = {};
+  const restaurantId = req.params.id;
+  console.log(restaurantId);
+  renderObject.title = 'Restaurants';
+  knex('restaurants')
+  .where('id', restaurantId)
+  .then((data) => {
+    console.log(data);
+    renderObject.data = data;
+    res.render('edit_restaurant', renderObject);
+  })
+  .catch(err => {
+    next(err);
+  });
+});
+
+
+router.put('/updateSubmit/:id', (req, res, next) => {
+  const id = parseInt(req.params.id);
+  const restaurant_name = req.body.restaurant_name;
+  const city = req.body.city;
+  const state = req.body.state;
+  const style = req.body.cuisine;
+  const images = req.body.images;
+  const description = req.body.description;
+  const zip = req.body.zip;
+  const street = req.body.street;
+  knex('restaurants')
+  .update({
+    restaurant_name: restaurant_name,
+    city: city,
+    state: state,
+    style: style,
+    images: images,
+    description: description,
+    zip: zip,
+    street: street
+  })
+  .where('id', id)
+  .returning('*')
+  .then((results) => {
+    if (results.length) {
+      res.status(200).json({
+        status: 'success',
+        message: `${results[0].name} has been updated!`
+      });
+    } else {
+      res.status(404).json({
+        status: 'errror',
+        message: 'That id does not exist'
+      });
+    }
+  })
+  .catch((err) => {
+    res.status(500).json({
+      status: 'errror',
+      message: 'Something bad happened!'
+    });
+  });
+});
 
 router.post('/new', (req, res, next) => {
   // grab the values to add to the db via req.body
@@ -63,7 +122,6 @@ router.post('/new', (req, res, next) => {
   const city = req.body.city;
   const state = req.body.state;
   const style = req.body.cuisine;
-  const rating = req.body.rating;
   const images = req.body.images;
   const description = req.body.description;
   const zip = req.body.zip;
