@@ -18,12 +18,13 @@ router.post('/', (req, res, next) => {
     if (passValid === true) {
       req.session.user = {
         dataId: data.id,
-        name: data.first_name + ' ' + data.last_name
+        name: data.first_name + ' ' + data.last_name,
+        admin: data.admin
       }
       req.session.save()
       console.log(req.session);
     }
     res.redirect('/')
-  })  
+  })
 })
 module.exports = router;
