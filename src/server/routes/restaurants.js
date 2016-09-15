@@ -71,7 +71,6 @@ router.get('/update/:id', function (req, res, next) {
   });
 });
 
-
 router.put('/updateSubmit/:id', (req, res, next) => {
   const id = parseInt(req.params.id);
   const restaurant_name = req.body.restaurant_name;
