@@ -2,72 +2,43 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 
-// router.get('/', function (req, res, next) {
-//   const renderObject = {};
-//   knex('restaurants')
-//   .then(data => {
-//     let renderData = data.slice(0, 9);
-//     renderData.forEach(object => {
-//       object.stringified = JSON.stringify(object);
-//     });
-//     renderObject.data = renderData;
-//     renderObject.title = 'Restaurants';
-//     res.render('restaurants', renderObject);
-//   }).catch(err => {
-//     next(err);
-//   });
-// });
-
-router.get('/new', (req, res, next) => {
+router.get('/:id/reviews/new', (req, res, next) => {
   const renderObject = {};
+  renderObject.title = req.query.name;
   res.render('new_review', renderObject);
 });
 
-// router.get('/:id', function (req, res, next) {
-//   const renderObject = {};
-//   const restaurantId = req.params.id;
-//   renderObject.title = 'Restaurants';
-//   knex('restaurants')
-//   .where('id', restaurantId)
-//   .then((data) => {
-//     renderObject.data = data;
-//     res.render('restaurant', renderObject);
-//   })
-//   .catch(err => {
-//     next(err);
-//   });
-// });
+router.post('/:id/reviews/new', (req, res, next) => {
+  const reviewer_name = req.body.reviewer_name;
+  const rating = req.body.rating;
 
-// router.post('/new', (req, res, next) => {
-//   // grab the values to add to the db via req.body
-//   const restaurant_name = req.body.name;
-//   const city = req.body.city;
-//   const state = req.body.state;
-//   const style = req.body.cuisine;
-//   const rating = req.body.rating;
-//   const images = req.body.images;
-//   const description = req.body.description;
-//   const zip = req.body.zip;
-//   const street = req.body.street;
-//   // add values to database
-//   knex('restaurants').insert({
-//     restaurant_name: restaurant_name,
-//     city: city,
-//     state: state,
-//     style: style,
-//     images: images,
-//     description: description,
-//     zip: zip,
-//     street: street
-//   })
-//   .then((results) => {
-//     // redirect user
-//     res.redirect('/');
-//   })
-//   .catch((err) => {
-//     return next(err);
-//   });
-// });
+  var date;
+  date = new Date();
+  date = date.getUTCFullYear() + '-' +
+    ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
+    ('00' + date.getUTCDate()).slice(-2);
 
-//
+  const text = req.body.text;
+  const user_id = req.body.user_id;
+  const renderObject = {};
+  const restaurant_id = req.body.id;
+
+  knex('reviews')
+  .insert({
+    rating: rating,
+    reviewer_name: reviewer_name,
+    date: date,
+    text: text,
+    user_id: user_id,
+    restaurant_id: restaurant_id
+  })
+  .returning('id')
+  .then(value => {
+    res.render(`restaurants/${value}`, renderObject);
+  })
+  .catch(err => {
+    return next(err);
+  });
+});
+
 module.exports = router;
