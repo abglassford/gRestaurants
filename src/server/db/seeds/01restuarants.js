@@ -15,8 +15,7 @@ exports.seed = function(knex, Promise) {
           zip: faker.address.zipCode(),
           images: faker.random.image(),
           description: faker.company.catchPhraseDescriptor()
-        })
-        ,
+        }),
         knex('restaurants').insert({
           restaurant_name: faker.company.companyName(),
           style: 'Tibetan',
