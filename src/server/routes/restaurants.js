@@ -44,7 +44,6 @@ router.get('/:id', function (req, res, next) {
 
 //Alex Nye Routes
 
-
 router.post('/new', (req, res, next) => {
   // grab the values to add to the db via req.body
   const restaurant_name = req.body.name;
