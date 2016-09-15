@@ -1,18 +1,39 @@
 {% extends "_base.html" %}
 
+{% block css %}
+<link rel="stylesheet" href="/css/signup.css">
+{% endblock %}
+
 {% block title %}{% endblock %}
 
 {% block content %}
+<div class="form container">
+  <h1>Create Account</h1>
+  <form id="signup"class="signup" action="/users" method="post">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="first_name">First Name</label>
+          <input class="form-control" type="text" name="first_name" id="input-first_name">
+        </div>
+        <div class="col-md-6">
+          <label for="last_name">Last Name</label>
+          <input class="form-control" type="text" name="last_name" id="input-last_name">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="email">Email</label>
+          <input class="form-control" type="email" name="email" id="input-email">
+        </div>
+        <div class="col-md-6">
+          <label for="password">Password</label>
+          <input class="form-control" type="password" name="password" id="input-password">
+        </div>
+      </div>
+    </div>
+    <button type="submit" name="submit">Submit</button>
+  </form>
+</div>
 
-  <div class="container">
-    <h1>{{title}}</h1>
-  </div>
-  <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/restaurants">Restaurants</a></li>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/signup">Sign Up</a></li>
-    </ul>
-  </nav>  </div>
 {% endblock %}
