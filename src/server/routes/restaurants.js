@@ -26,12 +26,13 @@ router.get('/new', (req, res, next) => {
 router.get('/:id', function (req, res, next) {
   const renderObject = {};
   const restaurantId = req.params.id;
-  renderObject.title = 'Restaurants';
 
   let restaurantPromise =
   knex('restaurants')
   .where('id', restaurantId)
   .then((restaurant) => {
+    console.log(restaurant.restaurant_name);
+    renderObject.title = restaurant.restaurant_name;
     renderObject.restaurants = restaurant;
   });
 
@@ -47,7 +48,7 @@ router.get('/:id', function (req, res, next) {
     res.render('restaurant', renderObject);
   })
   .catch(err => {
-    console.log(err);
+    return next(err);
   });
 });
 
