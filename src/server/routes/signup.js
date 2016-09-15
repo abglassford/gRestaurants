@@ -7,4 +7,7 @@ router.get('/', function (req, res, next) {
   res.render('signup', renderObject);
 });
 
+router.get('/new', (req, res, next) => {
+  res.render('signup')
+})
 module.exports = router;
