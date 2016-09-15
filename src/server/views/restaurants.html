@@ -4,7 +4,7 @@
 
 {% block content %}
 
-  <div class="restaurants">
+  <div class="restaurants container">
       {%for restaurant in data%}
     <div class="restaurantDiv col-xs-4">
       <a href="/restaurants/{{restaurant.id}}" class="restaurantLink"><img class="restImg"src="{{restaurant.images}}" alt="image" /></a>

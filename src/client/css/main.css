@@ -6,6 +6,12 @@ a {
   text-decoration: none;
   color: black;
 }
+
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
 .restaurantDiv{
   height: 180px;
 }
@@ -14,17 +20,11 @@ a {
   height: 100px;
 }
 
-.container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
 nav {
   margin-top: 0px;
   height: 100px;
-  background-color: rgb(103, 180, 122)
+  background-color: rgb(103, 180, 122);
+  margin-bottom: 2rem;
 }
 
 nav ul {
@@ -44,4 +44,15 @@ nav li {
 
 nav .wrapper {
   display: flex;
+}
+
+footer {
+  background-color: black;
+  display: block;
+  margin-top: 5rem;
+}
+
+footer p {
+  color: white;
+  padding: 16px;
 }
