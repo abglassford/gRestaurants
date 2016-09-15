@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
+const validation = require('./validation');
 
 router.get('/', function (req, res, next) {
   const renderObject = {};
@@ -116,7 +117,7 @@ router.put('/updateSubmit/:id', (req, res, next) => {
   });
 });
 
-router.post('/new', (req, res, next) => {
+router.post('/new', validation.verify, (req, res, next) => {
   // grab the values to add to the db via req.body
   const restaurant_name = req.body.name;
   const city = req.body.city;

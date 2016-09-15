@@ -3,6 +3,8 @@
   'use strict';
 
   // *** main dependencies *** //
+  const expressValidator = require('express-validator');
+
   const path = require('path');
   const cookieParser = require('cookie-parser');
   const bodyParser = require('body-parser');
@@ -36,6 +38,7 @@
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
     // uncomment if using express-session
+    app.use(expressValidator());
     app.use(session({
       secret: process.env.SECRET_KEY,
       resave: false,
