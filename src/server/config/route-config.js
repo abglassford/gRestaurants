@@ -16,7 +16,7 @@
     app.use('/restaurants', restaurants);
     app.use('/signup', signup);
     app.use('/login', login);
-    app.use('/reviews', reviews);
+    app.use('/restaurants', reviews);
 
   };
 
