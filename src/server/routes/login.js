@@ -14,17 +14,17 @@ router.post('/', (req, res, next) => {
   .where('email', req.body.email)
   .first()
   .then(data => {
-    var passValid = bcrypt.compareSync(req.body.password, data.password)
+    var passValid = bcrypt.compareSync(req.body.password, data.password);
     if (passValid === true) {
       req.session.user = {
         dataId: data.id,
         name: data.first_name + ' ' + data.last_name,
         admin: data.admin
-      }
-      req.session.save()
+      };
+      req.session.save();
       console.log(req.session);
     }
-    res.redirect('/')
-  })
-})
+    res.redirect('/');
+  });
+});
 module.exports = router;
