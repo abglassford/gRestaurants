@@ -7,7 +7,18 @@ router.get('/', function (req, res, next) {
   res.render('signup', renderObject);
 });
 
-router.get('/new', (req, res, next) => {
-  res.render('signup')
+router.post('/new', (req, res, next) => {
+  const first_name = req.body.first_name;
+  const last_name = req.body.last_name;
+  const email = req.body.email;
+  const password = req.body.password;
+  
+  knex('users').insert({
+    first_name: first_name,
+    last_name: last_name,
+    email: email,
+
+  })
+  console.log(req.body.first_name);
 })
 module.exports = router;
