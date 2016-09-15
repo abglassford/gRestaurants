@@ -38,6 +38,11 @@ router.get('/:id', function (req, res, next) {
   });
 });
 
+//Ryan Pando routes
+
+//
+
+//Alex Nye Routes
 
 router.post('/new', (req, res, next) => {
   // grab the values to add to the db via req.body
