@@ -18,6 +18,11 @@ router.get('/', function (req, res, next) {
   });
 });
 
+router.get('/new', (req, res, next) => {
+  const renderObject = {};
+  res.render('new_restaurant', renderObject);
+});
+
 router.get('/:id', function (req, res, next) {
   const renderObject = {};
   const restaurantId = req.params.id;
@@ -38,10 +43,7 @@ router.get('/:id', function (req, res, next) {
 //
 
 //Alex Nye Routes
-router.get('/new', (req, res, next) => {
-  const renderObject = {};
-  res.render('new_restaurant', renderObject);
-});
+
 
 router.post('/new', (req, res, next) => {
   // grab the values to add to the db via req.body
@@ -60,7 +62,6 @@ router.post('/new', (req, res, next) => {
     city: city,
     state: state,
     style: style,
-    //rating: rating,
     images: images,
     description: description,
     zip: zip,
