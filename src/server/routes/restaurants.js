@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
       object.stringified = JSON.stringify(object);
     });
     renderObject.data = renderData;
-    renderObject.title = 'Restaurants';
+    renderObject.title = 'gRestaurants';
     res.render('restaurants', renderObject);
   }).catch(err => {
     next(err);
@@ -26,7 +26,7 @@ router.get('/new', (req, res, next) => {
 router.get('/:id', function (req, res, next) {
   const renderObject = {};
   const restaurantId = req.params.id;
-  renderObject.title = 'Restaurants';
+  renderObject.title = 'gRestaurants';
   knex('restaurants')
   .where('id', restaurantId)
   .then((data) => {
@@ -37,12 +37,6 @@ router.get('/:id', function (req, res, next) {
     next(err);
   });
 });
-
-//Ryan Pando routes
-
-//
-
-//Alex Nye Routes
 
 
 router.post('/new', (req, res, next) => {
