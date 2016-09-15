@@ -9,15 +9,27 @@
 {% block content %}
 
   <div class="restaurants">
-      {%for restaurant in data%}
+      {%for restaurant in restaurants%}
     <div class="restaurantDiv col-xs-4">
-      <h1><a href="">{{restaurant.restaurant_name}}</a></h1>
-      <a href=""><img class="restImg"src="{{restaurant.images}}" alt="image" /></a>
+      <h1>{{restaurant.restaurant_name}}</h1>
+      <img class="restImg"src="{{restaurant.images}}" alt="image"/>
       <h3>{{restaurant.style}}</h3>
       <h4>{{restaurant.location}}</h4>
       <h4>{{restaurant.rating}}</h4>
     </div>
       {%endfor%}
+  </div>
+  <div class="reviewsDiv">
+
+    {% for review in reviews%}
+    {% if loop.index == 0%}
+    <h2> {{loop.length}} </h2>
+    {% endif%}
+    <h2>{{review.date}}</h2>
+    <h4>{{review.rating}}</h4>
+    <p>{{review.text}}<p>
+    <p>{{review.first_name}} {{review.last_name}}</p>
+    {% endfor%}
   </div>
 
 
