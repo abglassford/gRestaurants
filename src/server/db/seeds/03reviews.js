@@ -8,12 +8,12 @@ exports.seed = (knex, Promise) => {
       var reviews = [];
       for (var i = 0; i < 20; i++) {
         let promise = knex('reviews').insert({
-          rating: faker.random.number({'min': 0, 'max': 5}),
+          rating: faker.random.number({ min: 0, max: 5 }),
           reviewer_name: faker.name.findName(),
           date: faker.date.past(),
           text: faker.lorem.sentences(),
-          user_id: maxUser-i,
-          restaurant_id: maxRestaurant-i
+          user_id: maxUser - i,
+          restaurant_id: maxRestaurant - i
         });
         reviews.push(promise);
       }
