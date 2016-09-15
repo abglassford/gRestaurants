@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
       object.stringified = JSON.stringify(object);
     });
     renderObject.data = renderData;
-    renderObject.title = 'Restaurants';
+    renderObject.title = 'gRestaurants';
     res.render('restaurants', renderObject);
   }).catch(err => {
     return next(err);
