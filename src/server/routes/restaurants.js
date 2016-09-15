@@ -4,6 +4,7 @@ const knex = require('../db/knex');
 
 router.get('/', function (req, res, next) {
   const renderObject = {};
+  console.log(req.session);
   knex('restaurants')
   .then(data => {
     let renderData = data.slice(0, 9);
