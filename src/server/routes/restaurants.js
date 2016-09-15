@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
     renderObject.title = 'Restaurants';
     res.render('restaurants', renderObject);
   }).catch(err => {
-    next(err);
+    return next(err);
   });
 });
 
@@ -27,14 +27,27 @@ router.get('/:id', function (req, res, next) {
   const renderObject = {};
   const restaurantId = req.params.id;
   renderObject.title = 'Restaurants';
+
+  let restaurantPromise =
   knex('restaurants')
   .where('id', restaurantId)
-  .then((data) => {
-    renderObject.data = data;
+  .then((restaurant) => {
+    renderObject.restaurants = restaurant;
+  });
+
+  let reviewsPromise = knex('reviews')
+  .where('restaurant_id', restaurantId)
+  .innerJoin('users', 'reviews.user_id', 'users.id')
+  .then((reviews) => {
+    renderObject.reviews = reviews;
+  });
+
+  Promise.all([restaurantPromise, reviewsPromise])
+  .then((resolvedPromises) => {
     res.render('restaurant', renderObject);
   })
   .catch(err => {
-    next(err);
+    console.log(err);
   });
 });
 
@@ -43,7 +56,6 @@ router.get('/:id', function (req, res, next) {
 //
 
 //Alex Nye Routes
-
 
 router.post('/new', (req, res, next) => {
   // grab the values to add to the db via req.body
