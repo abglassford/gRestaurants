@@ -31,8 +31,7 @@ router.get('/:id', function (req, res, next) {
   knex('restaurants')
   .where('id', restaurantId)
   .then((restaurant) => {
-    console.log(restaurant.restaurant_name);
-    renderObject.title = restaurant.restaurant_name;
+    renderObject.title = restaurant[0].restaurant_name;
     renderObject.restaurants = restaurant;
   });
 
@@ -71,7 +70,6 @@ router.get('/update/:id', function (req, res, next) {
     next(err);
   });
 });
-
 
 router.put('/updateSubmit/:id', (req, res, next) => {
   const id = parseInt(req.params.id);
