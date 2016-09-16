@@ -12,11 +12,19 @@
     const reviews = require('../routes/reviews');
 
     // *** register routes *** //
+    app.use((req,res,next) => {
+      req.renderObject = {};
+      next();
+    });
     app.use('/', routes);
     app.use('/restaurants', restaurants);
     app.use('/signup', signup);
     app.use('/login', login);
     app.use('/restaurants', reviews);
+    app.use(function(err, req, res, next) {
+      console.error(err.stack);
+      res.status(500).send('Something broke!');
+    });
 
   };
 

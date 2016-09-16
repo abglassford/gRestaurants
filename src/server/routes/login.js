@@ -2,14 +2,15 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const bcrypt = require('bcrypt');
+const indexController = require('../controllers/index');
 
-router.get('/', function (req, res, next) {
+router.get('/', indexController.isAuthenticated, function (req, res, next) {
   const renderObject = {};
   renderObject.title = 'Log In';
   res.render('login', renderObject);
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', indexController.isAuthenticated, (req, res, next) => {
   knex('users').select('*')
   .where('email', req.body.email)
   .first()
