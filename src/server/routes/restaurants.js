@@ -5,7 +5,7 @@ const validation = require('./validation');
 const indexController = require('../controllers/index');
 
 router.get('/', indexController.isAuthenticated, function (req, res, next) {
-  const renderObject = {};
+  const renderObject = req.renderObject;
   knex('restaurants')
   .then(data => {
       data.forEach(object => {
@@ -21,13 +21,15 @@ router.get('/', indexController.isAuthenticated, function (req, res, next) {
   });
 
 router.get('/new', (req, res, next) => {
-  const renderObject = {};
+  const renderObject = req.renderObject;
   res.render('new_restaurant', renderObject);
 });
 
 router.get('/:id', indexController.isAuthenticated, function (req, res, next) {
-  const renderObject = {};
+  const renderObject = req.renderObject;
   const restaurantId = req.params.id;
+  const promiseArray = [];
+
   let restaurantPromise =
   knex('restaurants')
   .where('id', restaurantId)
@@ -35,6 +37,7 @@ router.get('/:id', indexController.isAuthenticated, function (req, res, next) {
     renderObject.title = 'gRestaurants';
     renderObject.restaurants = restaurant;
   });
+  promiseArray.push(restaurantPromise);
 
   let reviewsPromise = knex('reviews')
   .where('restaurant_id', restaurantId)
@@ -42,8 +45,20 @@ router.get('/:id', indexController.isAuthenticated, function (req, res, next) {
   .then((reviews) => {
     renderObject.reviews = reviews;
   });
+  promiseArray.push(reviewsPromise);
+  if (req.renderObject.admin === true) {
+    let employeesPromise = knex('employees')
+    .where('restaurant_id', restaurantId)
+    .then((employees) => {
+      renderObject.employees = employees;
+    })
+    .catch(err => {
+      return next(err);
+    });
+    promiseArray.push(employeesPromise);
+  }
 
-  Promise.all([restaurantPromise, reviewsPromise])
+  Promise.all(promiseArray)
   .then((resolvedPromises) => {
     res.render('restaurant', renderObject);
   })
@@ -56,14 +71,12 @@ router.get('/:id', indexController.isAuthenticated, function (req, res, next) {
 
 //Alex Nye Routes
 router.get('/update/:id', indexController.isAuthenticated, function (req, res, next) {
-  const renderObject = {};
+  const renderObject = req.renderObject;
   const restaurantId = req.params.id;
-  console.log(restaurantId);
   renderObject.title = 'Restaurants';
   knex('restaurants')
   .where('id', restaurantId)
   .then((data) => {
-    console.log(data);
     renderObject.data = data;
     res.render('edit_restaurant', renderObject);
   })
@@ -109,10 +122,7 @@ router.put('/updateSubmit/:id', indexController.isAuthenticated, (req, res, next
     }
   })
   .catch((err) => {
-    res.status(500).json({
-      status: 'errror',
-      message: 'Something bad happened!'
-    });
+    return next();
   });
 });
 
