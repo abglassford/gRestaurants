@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const validation = require('./validation');
+const indexController = require('../controllers/index');
 
-router.get('/', function (req, res, next) {
+router.get('/', indexController.isAuthenticated, function (req, res, next) {
   const renderObject = {};
   knex('restaurants')
   .then(data => {
@@ -25,15 +26,9 @@ router.get('/new', (req, res, next) => {
   res.render('new_restaurant', renderObject);
 });
 
-router.get('/:id', function (req, res, next) {
+router.get('/:id', indexController.isAuthenticated, function (req, res, next) {
   const renderObject = {};
   const restaurantId = req.params.id;
-  if (req.session.user === undefined) {
-    req.session.user = null;
-  }
-  else {
-    renderObject.admin = req.session.user.admin;
-  }
   let restaurantPromise =
   knex('restaurants')
   .where('id', restaurantId)
@@ -61,7 +56,7 @@ router.get('/:id', function (req, res, next) {
 //Ryan Pando routes
 
 //Alex Nye Routes
-router.get('/update/:id', function (req, res, next) {
+router.get('/update/:id', indexController.isAuthenticated, function (req, res, next) {
   const renderObject = {};
   const restaurantId = req.params.id;
   console.log(restaurantId);
@@ -78,7 +73,7 @@ router.get('/update/:id', function (req, res, next) {
   });
 });
 
-router.put('/updateSubmit/:id', (req, res, next) => {
+router.put('/updateSubmit/:id', indexController.isAuthenticated, (req, res, next) => {
   const id = parseInt(req.params.id);
   const restaurant_name = req.body.restaurant_name;
   const city = req.body.city;
@@ -122,7 +117,7 @@ router.put('/updateSubmit/:id', (req, res, next) => {
   });
 });
 
-router.post('/new', validation.verify, (req, res, next) => {
+router.post('/new', validation.verify, indexController.isAuthenticated, (req, res, next) => {
   // grab the values to add to the db via req.body
   const restaurant_name = req.body.name;
   const city = req.body.city;
