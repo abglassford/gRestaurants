@@ -13,7 +13,7 @@ router.get('/', indexController.isAuthenticated, (req, res, next) => {
     }
     renderObject.data = featureArray;
     renderObject.title = 'gRestaurants';
-    renderObject.sessionName = req.session.user.name || null;
+    renderObject.sessionName = req.session.user || null;
     res.render('index', renderObject);
   }).catch(err => next(err));
 });
