@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
+const validation = require('./validation');
 
 router.get('/', function (req, res, next) {
   const renderObject = {};
@@ -82,7 +83,7 @@ router.put('/updateSubmit/:id', (req, res, next) => {
   const restaurant_name = req.body.restaurant_name;
   const city = req.body.city;
   const state = req.body.state;
-  const style = req.body.cuisine;
+  const style = req.body.style;
   const images = req.body.images;
   const description = req.body.description;
   const zip = req.body.zip;
@@ -121,12 +122,12 @@ router.put('/updateSubmit/:id', (req, res, next) => {
   });
 });
 
-router.post('/new', (req, res, next) => {
+router.post('/new', validation.verify, (req, res, next) => {
   // grab the values to add to the db via req.body
   const restaurant_name = req.body.name;
   const city = req.body.city;
   const state = req.body.state;
-  const style = req.body.cuisine;
+  const style = req.body.style;
   const images = req.body.images;
   const description = req.body.description;
   const zip = req.body.zip;
