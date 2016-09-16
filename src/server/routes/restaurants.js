@@ -73,7 +73,7 @@ router.get('/update/:id', indexController.isAuthenticated, function (req, res, n
   });
 });
 
-router.put('/updateSubmit/:id', indexController.isAuthenticated, (req, res, next) => {
+router.put('/updateSubmit/:id', validation.verify, indexController.isAuthenticated, (req, res, next) => {
   const id = parseInt(req.params.id);
   const restaurant_name = req.body.restaurant_name;
   const city = req.body.city;
