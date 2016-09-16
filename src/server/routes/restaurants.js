@@ -4,7 +4,6 @@ const knex = require('../db/knex');
 
 router.get('/', function (req, res, next) {
   const renderObject = {};
-  console.log(req.session);
   knex('restaurants')
   .then(data => {
     let renderData = data.slice(0, 9);
@@ -27,7 +26,12 @@ router.get('/new', (req, res, next) => {
 router.get('/:id', function (req, res, next) {
   const renderObject = {};
   const restaurantId = req.params.id;
-
+  if (req.session.user === undefined) {
+    req.session.user = null;
+  }
+  else {
+    renderObject.admin = req.session.user.admin;
+  }
   let restaurantPromise =
   knex('restaurants')
   .where('id', restaurantId)
@@ -68,7 +72,7 @@ router.get('/update/:id', function (req, res, next) {
     res.render('edit_restaurant', renderObject);
   })
   .catch(err => {
-    next(err);
+    return next(err);
   });
 });
 

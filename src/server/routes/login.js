@@ -22,7 +22,6 @@ router.post('/', (req, res, next) => {
         admin: data.admin
       };
       req.session.save();
-      console.log(req.session);
     }
     res.redirect('/');
   });
