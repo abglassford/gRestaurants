@@ -5,11 +5,14 @@ const knex = require('../db/knex');
 router.get('/:id/reviews/new', (req, res, next) => {
   const renderObject = {};
   renderObject.title = req.query.name;
+  renderObject.restaurant_id = req.params.id;
+  renderObject.name = req.session.user.name;
+  renderObject.user_id = Number(req.session.user.dataId);
   res.render('new_review', renderObject);
 });
 
 router.post('/:id/reviews/new', (req, res, next) => {
-  const reviewer_name = req.body.reviewer_name;
+  const reviewer_name = req.session.user.name;
   const rating = req.body.rating;
 
   var date;
@@ -20,8 +23,12 @@ router.post('/:id/reviews/new', (req, res, next) => {
 
   const text = req.body.text;
   const user_id = req.body.user_id;
+  const restaurant_id = req.params.id;
   const renderObject = {};
-  const restaurant_id = req.body.id;
+  renderObject.title = req.query.name;
+  renderObject.restaurant_id = req.params.id;
+  renderObject.name = req.session.user.name;
+  renderObject.user_id = parseInt(req.session.user.dataId);
 
   knex('reviews')
   .insert({
@@ -32,9 +39,8 @@ router.post('/:id/reviews/new', (req, res, next) => {
     user_id: user_id,
     restaurant_id: restaurant_id
   })
-  .returning('id')
   .then(value => {
-    res.render(`restaurants/${value}`, renderObject);
+    res.redirect(`/restaurants/${restaurant_id}`);
   })
   .catch(err => {
     return next(err);
