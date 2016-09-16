@@ -5,10 +5,10 @@ const indexController = require('../controllers/index');
 
 router.get('/:id/reviews/new', indexController.isAuthenticated, (req, res, next) => {
   const renderObject = req.renderObject;
-  renderObject.title = req.query.name;
+  renderObject.title = req.body.name;
   renderObject.restaurant_id = req.params.id;
   renderObject.name = req.session.user.name;
-  renderObject.user_id = parseInt(req.session.user.dataId);
+  renderObject.user_id = Number(req.session.user.dataId);
   res.render('new_review', renderObject);
 });
 

@@ -9,6 +9,7 @@ function sum(num1, num2, callback) {
 }
 
 function isAuthenticated(req, res, next) {
+  console.log(req.session.user);
   if (req.session.user === undefined) {
     req.session.user = 'not logged in';
     req.session.user.admin = null;
