@@ -5,28 +5,24 @@
 {% block content %}
 
   <div class="container col-xs-6">
-    <h1>Edit Restaurant</h1>
-    {% if errors.length %}
-      <ul>
-        {% for error in errors %}
-          <li>{{error.msg}}</li>
 
-        {% endfor %}
-      </ul>
+    <h1>Edit Restaurant</h1>
+
+      <ul id="errorList"></ul>
       <br>
-    {% endif %}
+
     <form id="edit_restaurant">
       <div class="form-group">
           <label for="rating">Logged In As:</label>
           <p class="form-control-static"></p>
       </div>
       <div class="form-group">
-          <label for="restaurantName"><h4>Name</h4></label>
-          <input type="text" name="name" id="restaurantName" class="form-control" value="{{data[0].restaurant_name}}" min="1">
+          <label for="restaurant_name"><h4>Name</h4></label>
+          <input type="text" name="restaurant_name" id="restaurant_name" class="form-control" value="{{data[0].restaurant_name}}" min="1">
         </div>
         <div class="form-group">
-          <label for="location"><h4>Location</h4></label>
-          <input type="text" name="city" id="location" class="form-control" value="{{data[0].city}}">
+          <label for="city"><h4>City</h4></label>
+          <input type="text" name="city" id="city" class="form-control" value="{{data[0].city}}">
         </div>
         <div class="form-group">
           <label for="zip"><h4>Zip</h4></label>
@@ -314,17 +310,31 @@
             <textarea rows="5" class="form-control col-xs-6" name="description" id="description">{{data[0].description}}</textarea>
 
         </div>
-
+        <input type="hidden" id ="formType" name="formType" value="edit_restaurant">
         <input type="hidden" id ="restaurant_id" name="restaurant_id" value="{{data[0].id}}">
+
+        <!-- Success Pop Up -->
+        <div class="bs-example" id="mySuccess" style="display:none">
+          <div class="alert alert-success fade in">
+              <a href="#" class="close" data-dismiss="alert">&times;</a>
+              <strong>Success!</strong> Your restaurant has been updated successfully.
+          </div>
+        </div>
+        <!-- Close Success Pop Up -->
+        
+        <br>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-    </div>
+
+
+
+    </div><!-- close container -->
 
 <script>
     $(document).on('submit', '#edit_restaurant', function(event) {
       event.preventDefault();
       const id = $('#restaurant_id').val();
-      const restaurant_name = $('#restaurantName').val();
+      const restaurant_name = $('#restaurant_name').val();
       const city = $('#city').val();
       const state = $('#state').val();
       const style = $('#style').val();
@@ -332,6 +342,7 @@
       const description = $('#description').val();
       const zip = $('#zip').val();
       const street = $('#street').val();
+      const formType = $('#formType').val();
       const payload = {
         id: id,
         restaurant_name: restaurant_name,
@@ -341,7 +352,8 @@
         images: images,
         description: description,
         zip: zip,
-        street: street
+        street: street,
+        formType: formType
       };
       $.ajax({
         type: 'PUT',
@@ -349,12 +361,23 @@
         data: payload
       })
       .done((data) => {
-        //$('#myModal').modal('toggle');
-        location.reload();
+        $('#mySuccess').toggle();
+        setTimeout(function() {
+          window.location.href = "../../restaurants";
+        }, 1000);
         console.log(data);
       })
       .fail((err) => {
-        console.log(err);
+
+        for (var i = 0; i < err.responseJSON.errors.length; i++) {
+          $('#' + err.responseJSON.errors[i].param).css({"border": "2px solid red", "border-radius": "7px"});
+          $('#errorList').append('<li>' + err.responseJSON.errors[i].msg + '</li>');
+          console.log(err.responseJSON.errors[i]);
+        }
+        // for (var prop in err.responseJSON.data) {
+        //   $('#' + prop).val(err.responseJSON.data.prop);
+        // }
+
       });
     });
 </script>

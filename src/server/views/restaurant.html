@@ -20,6 +20,25 @@
           <h4>{{restaurant.location}}</h4>
           <h4>{{restaurant.rating}}</h4>
         </div>
+      <div class="restaurantDiv col-xs-offset-2 col-xs-2">
+        <h1>{{restaurant.restaurant_name}}</h1>
+        <img class="restImg"src="{{restaurant.images}}" alt="image"/>
+        <h3>Cuisine: {{restaurant.style}}</h3>
+        <h4>{{restaurant.location}}</h4>
+        <h4>{{restaurant.rating}}</h4>
+
+        <!-- Success Pop Up -->
+        <div class="bs-example" id="mySuccess" style="display:none">
+          <div class="alert alert-success fade in">
+              <a href="#" class="close" data-dismiss="alert">&times;</a>
+              <strong>Success!</strong> Your restaurant has been deleted successfully.
+          </div>
+        </div>
+        <!-- Close Success Pop Up -->
+        <form action="/restaurants/update/{{restaurant.id}}"><input type="submit" class="submitLink" value="Update" /></form>
+        <form id="deleteForm"><input type="hidden" id="restID" value="{{restaurant.id}}" name="restID" /> <input type="submit" class="submitLink" value="Delete" /></form>
+
+      </div>
         {%endfor%}
       <div class="reviewsDiv col-xs-offset-4 col-xs-4">
           <h2>{{reviews.length}} Review{% if reviews.length != 1 %}s{% endif %}</h2>
@@ -40,5 +59,27 @@
     </div>
     {%endfor%}
   </div>
+
+  <script>
+  $(document).on('submit', '#deleteForm', function(event) {
+    event.preventDefault();
+    const id = $('#restID').val();
+    $.ajax({
+      type: 'DELETE',
+      url: `/restaurants/delete/${id}`
+    })
+    .done((data) => {
+      $('#mySuccess').toggle();
+      setTimeout(function() {
+        window.location.href = "../../restaurants";
+      }, 1000);
+      console.log(data);
+    })
+    .fail((err) => {
+      console.log(err);
+    });
+  });
+
+  </script>
 
 {% endblock %}
