@@ -8,20 +8,17 @@ router.get('/', indexController.isAuthenticated, function (req, res, next) {
   const renderObject = {};
   knex('restaurants')
   .then(data => {
-    let renderData = data;
-    renderData.forEach(object => {
-    data.forEach(object => {
-      object.stringified = JSON.stringify(object);
+      data.forEach(object => {
+        object.stringified = JSON.stringify(object);
+      });
+      renderObject.data = data;
+      renderObject.title = 'gRestaurants';
+      renderObject.session = req.session.user || null;
+      res.render('restaurants', renderObject);
+    }).catch(err => {
+      return next(err);
     });
-    renderObject.data = data;
-    renderObject.title = 'gRestaurants';
-    renderObject.session = req.session.user || null;
-    res.render('restaurants', renderObject);
-  }).catch(err => {
-    return next(err);
   });
-});
-});
 
 router.get('/new', (req, res, next) => {
   const renderObject = {};
