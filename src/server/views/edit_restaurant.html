@@ -8,30 +8,27 @@
     <h1>Edit Restaurant</h1>
     <form id="edit_restaurant">
       <div class="form-group">
-        <div class="row">
           <label for="rating">Logged In As:</label>
           <p class="form-control-static"></p>
-        </div>
       </div>
       <div class="form-group">
-        <div class="row">
           <label for="restaurantName"><h4>Name</h4></label>
           <input type="text" name="name" id="restaurantName" class="form-control" value="{{data[0].restaurant_name}}" min="1">
         </div>
-        <div class="row">
+        <div class="form-group">
           <label for="location"><h4>Location</h4></label>
           <input type="text" name="city" id="location" class="form-control" value="{{data[0].city}}">
         </div>
-        <div class="row">
+        <div class="form-group">
           <label for="zip"><h4>Zip</h4></label>
           <input type="text" name="zip" id="zip" class="form-control" value="{{data[0].zip}}">
         </div>
-        <div class="row">
+        <div class="form-group">
           <label for="street"><h4>Street</h4></label>
           <input type="text" name="street" id="street" class="form-control" value="{{data[0].street}}">
         </div>
         <br>
-        <div class="row">
+        <div class="form-group">
           <label for="state"><h4>State</h4></label>
           <select name="state" id="state">
             <option value="{{data[0].state}}">{{data[0].state}}</option>
@@ -89,10 +86,10 @@
           </select>
         </div>
         <br>
-        <div class="row">
+        <div class="form-group">
           <label for="cuisine"><h4>Cuisine</h4></label>
         </div>
-        <div class="row">
+        <div class="form-group">
           <select name="cuisine" id="cuisine">
             <option value="{{data[0].style}}">{{data[0].style}}</option>
             <option value="option">Afghan</option>
@@ -299,33 +296,14 @@
             <option value="option">Zimbabwean</option>
           </select>
         </div>
-        <!-- <div class="row">
-          <label for="rating"><h4>Rating:</h4></label>
-            <label class="radio-inline">
-              <input type="radio" name="rating" id="rating-radio-1" value="1"> 1
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="rating" id="rating-radio-2" value="2"> 2
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="rating" id="rating-radio-3" value="3"> 3
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="rating" id="rating-radio-4" value="4"> 4
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="rating" id="rating-radio-5" value="5"> 5
-            </label>
-          </div> -->
-        </div>
-        <div class="row">
+
+        <div class="form-group">
           <h4>Image</h4><input type="url" name="images" id="images" class="form-control form-inline" value="{{data[0].images}}">
         </div>
         <div class="form-group">
-          <div class="row">
             <label for="description">Short Bio</label>
             <textarea rows="5" class="form-control col-xs-6" name="description" id="description">{{data[0].description}}</textarea>
-          </div>
+
         </div>
 
         <input type="hidden" id ="restaurant_id" name="restaurant_id" value="{{data[0].id}}">
