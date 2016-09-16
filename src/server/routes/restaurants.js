@@ -10,15 +10,17 @@ router.get('/', indexController.isAuthenticated, function (req, res, next) {
   .then(data => {
     let renderData = data;
     renderData.forEach(object => {
+    data.forEach(object => {
       object.stringified = JSON.stringify(object);
     });
-    renderObject.data = renderData;
+    renderObject.data = data;
     renderObject.title = 'gRestaurants';
     renderObject.session = req.session.user || null;
     res.render('restaurants', renderObject);
   }).catch(err => {
     return next(err);
   });
+});
 });
 
 router.get('/new', (req, res, next) => {
