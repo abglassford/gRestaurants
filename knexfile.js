@@ -11,7 +11,7 @@ module.exports = {
   },
   production: {
     client: 'postgresql',
-    connection: 'postgres://localhost:5432/grestaurants',
+    connection: DB_URL,
     migrations: {
       directory: __dirname + '/src/server/db/migrations'
     },
