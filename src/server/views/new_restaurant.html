@@ -27,9 +27,7 @@
           <p class="form-control-static"></p>
 
       </div>
-<!-- ------------------- Start Error Form ----------------------------------- -->
       {% if errors.length %}
-<!-- border: 2px solid red; border-radius: 7px; -->
       <div class="form-group">
           <label for="restaurantName"><h4>Name</h4></label>
           <input type="text" name="name" id="restaurantName" class="form-control" value="{{formValues.name}}" min="1">
@@ -326,7 +324,6 @@
         </div>
 
       {% else %}
-<!-- ------------------- Start Regular Form ----------------------------------- -->
 
       <div class="form-group">
           <label for="restaurantName"><h4>Name</h4></label>

@@ -32,7 +32,7 @@ router.get('/:id', indexController.isAuthenticated, function (req, res, next) {
   knex('restaurants')
   .where('id', restaurantId)
   .then((restaurant) => {
-    renderObject.title = restaurant[0].restaurant_name;
+    renderObject.title = 'gRestaurants';
     renderObject.restaurants = restaurant;
   });
 

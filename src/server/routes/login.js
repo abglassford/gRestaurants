@@ -6,7 +6,7 @@ const indexController = require('../controllers/index');
 
 router.get('/', indexController.isAuthenticated, function (req, res, next) {
   const renderObject = {};
-  renderObject.title = 'Log In';
+  renderObject.title = 'gRestaurants';
   res.render('login', renderObject);
 });
 
