@@ -312,18 +312,21 @@
         </div>
         <input type="hidden" id ="formType" name="formType" value="edit_restaurant">
         <input type="hidden" id ="restaurant_id" name="restaurant_id" value="{{data[0].id}}">
+
+        <!-- Success Pop Up -->
+        <div class="bs-example" id="mySuccess" style="display:none">
+          <div class="alert alert-success fade in">
+              <a href="#" class="close" data-dismiss="alert">&times;</a>
+              <strong>Success!</strong> Your restaurant has been updated successfully.
+          </div>
+        </div>
+        <!-- Close Success Pop Up -->
+        
         <br>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
 
-      <!-- Success Pop Up -->
-      <div class="bs-example" id="mySuccess" style="display:none">
-        <div class="alert alert-success fade in">
-            <a href="#" class="close" data-dismiss="alert">&times;</a>
-            <strong>Success!</strong> Your restaurant has been updated successfully.
-        </div>
-      </div>
-      <!-- Close Success Pop Up -->
+
 
     </div><!-- close container -->
 

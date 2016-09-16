@@ -156,5 +156,29 @@ router.post('/new', validation.verify, indexController.isAuthenticated, (req, re
   });
 });
 
+router.delete('/delete/:id', (req, res, next) => {
+  const id = parseInt(req.params.id);
+  knex('restaurants')
+  .del()
+  .where('id', id)
+  .returning('*')
+  .then((results) => {
+    if (results.length) {
+      res.status(200).json({
+        status: 'success',
+        message: `Restaurant is gone!`
+      });
+    } else {
+      res.status(404).json({
+        status: 'errror',
+        message: 'That restaurant id does not exist'
+      });
+    }
+  })
+  .catch((err) => {
+    return next(err);
+  });
+});
+
 //
 module.exports = router;
