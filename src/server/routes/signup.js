@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const knex = require('../db/knex');
 const indexController = require('../controllers/index');
 
-router.get('/', indexController.isAuthenticated, function (req, res, next) {
+router.get('/', indexController.isAuthenticated, (req, res, next) => {
 
   const renderObject = req.renderObject;
   renderObject.title = 'gRestaurants';

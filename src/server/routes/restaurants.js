@@ -8,17 +8,22 @@ router.get('/', indexController.isAuthenticated, function (req, res, next) {
   const renderObject = req.renderObject;
   knex('restaurants')
   .then(data => {
-      data.forEach(object => {
-        object.stringified = JSON.stringify(object);
-      });
-      renderObject.data = data;
-      renderObject.title = 'gRestaurants';
-      renderObject.session = req.session.user || null;
-      res.render('restaurants', renderObject);
-    }).catch(err => {
-      return next(err);
+    data.forEach(object => {
+      object.stringified = JSON.stringify(object);
     });
+    renderObject.data = data;
+    renderObject.title = 'gRestaurants';
+    renderObject.session = req.session.user || null;
+    res.render('restaurants', renderObject);
+  }).catch(err => {
+    return next(err);
   });
+});
+
+function mapShow (name) {
+  const restNameURI = encodeURI(name);
+  return `https://www.google.com/maps/embed/v1/search?key=AIzaSyD3nHjd0_RGDNdjaWEqsfJpcNn7WD3osic&q=${restNameURI}`;
+}
 
 router.get('/new', (req, res, next) => {
   const renderObject = req.renderObject;
@@ -30,12 +35,12 @@ router.get('/:id', indexController.isAuthenticated, function (req, res, next) {
   const restaurantId = req.params.id;
   const promiseArray = [];
 
-  let restaurantPromise =
-  knex('restaurants')
+  let restaurantPromise = knex('restaurants')
   .where('id', restaurantId)
   .then((restaurant) => {
     renderObject.title = 'gRestaurants';
     renderObject.restaurants = restaurant;
+    renderObject.restaurants[0].map = mapShow(restaurant[0].restaurant_name);
   });
   promiseArray.push(restaurantPromise);
 
