@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-<<<<<<< HEAD
 
-router.get('/', (req, res, next) => {
-=======
 const indexController = require('../controllers/index');
 
 router.get('/', indexController.isAuthenticated, (req, res, next) => {
->>>>>>> 2bc44162ea9ec1ee077a07a02dd64c2a028cc547
   const renderObject = {};
   const featureArray = [];
   knex('restaurants')
