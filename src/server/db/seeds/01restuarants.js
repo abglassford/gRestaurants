@@ -98,93 +98,93 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: 'Yard House',
-          style: 'Turkish',
+          style: 'American',
           street: '1555 Court Pl',
           city: 'Denver',
           state: 'CO',
           zip: 80202,
           images: 'http://media.yardhouse.com/en_us/images/marketing/lakewood-co-yard-house-599x430.jpg.jpg',
-          description: faker.company.catchPhraseDescriptor()
+          description: 'High-end sports-bar chain with a huge menu of New American fare & an extensive list of draft beers.'
         }),
         knex('restaurants').insert({
-          restaurant_name: 'Argyll Whisky Beer',
-          style: 'Tibetan',
-          street: '1035 E 17th Ave',
+          restaurant_name: 'The District Bistro',
+          style: 'Bistro',
+          street: '1320 E 17th Ave',
           city: 'Denver',
           state: 'CO',
-          zip: 80202,
-          images: 'http://ozarch.com/wp-content/uploads/2014/09/Argyll15-600x420.jpg',
-          description: faker.company.catchPhraseDescriptor()
+          zip: 80218,
+          images: 'https://lh5.googleusercontent.com/proxy/JfC2lnMRQ1Zht2-AKMftmYgLZgrgmy_DAKsbmIg4t9b6rQNHqe-w0CqRiB9ynzWVcvyDIHixiiaaXIib48sBGAdQUhx6XR6PfjU01Aombiz7ZxobPHPJWWJ4MaacR-a8a2dMpV0xguAxOeRqGesDhdc5A1UxkA=w455-h256',
+          description: 'Sophisticated American bar & grill for elevated pub-grub classics such as Reuben fries.'
         }),
         knex('restaurants').insert({
           restaurant_name: 'Paramount Cafe',
-          style: 'Sudanese',
+          style: 'American',
           street: '519 16th St',
           city: 'Denver',
           state: 'CO',
           zip: 80202,
           images: 'http://svcdn.simpleviewinc.com/v3/cache/www_denver_org/F223DBAABE551426997C02AE0614865C.jpg',
-          description: faker.company.catchPhraseDescriptor()
+          description: 'American pub-grub purveyor housed in the Paramount Theatre that has a lively sports-bar-like scene.'
         }),
         knex('restaurants').insert({
           restaurant_name: 'The Delectable Egg',
-          style: 'Basque',
+          style: 'Breakfast',
           street: '1625 Court Pl',
           city: 'Denver',
           state: 'CO',
           zip: 80202,
           images: 'https://media-cdn.tripadvisor.com/media/photo-s/02/06/74/9d/delectable-egg.jpg',
-          description: faker.company.catchPhraseDescriptor()
+          description: 'Bright, casual dinerlike branch of a 1982 local chain specializing in American breakfasts & lunches.'
         }),
         knex('restaurants').insert({
           restaurant_name: 'Rialto Cafe',
-          style: 'Basque',
+          style: 'American',
           street: '934 16th St, Denver',
           city: 'Denver',
           state: 'CO',
           zip: 80202,
           images: 'https://livinitupdenver.files.wordpress.com/2011/10/imag0526.jpg',
-          description: faker.company.catchPhraseDescriptor()
+          description: 'American fare plus people-watching from the clubby dining room & sidewalk seats.'
         }),
         knex('restaurants').insert({
           restaurant_name: 'Euclid Hall Bar and Kitchen',
-          style: 'Swiss',
+          style: 'American',
           street: '1317 14th St',
           city: 'Denver',
           state: 'CO',
           zip: 80202,
           images: 'http://denver.thedrinknation.com/images/bars/EuclidHallDenver.jpg',
-          description: faker.company.catchPhraseDescriptor()
+          description: 'High-concept eclectic bar bites & a carefully sourced beer list in an industrial-modern pub setting.'
         }),
         knex('restaurants').insert({
           restaurant_name: 'ChoLon Modern Asian Bistro',
-          style: 'Senegalese',
+          style: 'Asian',
           street: '1555 Blake St ',
           city: 'Denver',
           state: 'CO',
           zip: 80202,
           images: 'http://www.milehighhappyhour.com/wp-content/uploads/2013/11/Cholon-1000x500.jpg',
-          description: faker.company.catchPhraseDescriptor()
+          description: 'Chef Lon Symensma puts together an elegant Southeast Asian menu at this sleek dining destination.'
         }),
         knex('restaurants').insert({
           restaurant_name: 'Park Tavern and Restaurant',
-          style: 'Senegalese',
+          style: 'American',
           street: '931 E 11th Ave',
           city: 'Denver',
           state: 'CO',
           zip: 80218,
           images: 'http://theparktaverndenver.com/wp-content/uploads/2014/05/Picture-018.jpg',
-          description: faker.company.catchPhraseDescriptor()
+          description: 'Drink specials & all-day comfort food draw a younger crowd to this neighborhood watering hole.'
         }),
         knex('restaurants').insert({
           restaurant_name: 'Shells and Sauce',
-          style: 'Russian',
+          style: 'Italian',
           street: '2600 E 12th Ave',
           city: 'Denver',
           state: 'CO',
           zip: 80206,
           images: 'http://2.bp.blogspot.com/-JIKwcSgIWng/UWnTMOto3OI/AAAAAAAAA0M/wAzi_8gnlYo/s1600/IMG_5627.JPG',
-          description: faker.company.catchPhraseDescriptor()
+          description: 'Jazzy little trattoria serving classic & creative fare, plus brunch & happy hour on the roof deck.'
         }),
         knex('restaurants').insert({
           restaurant_name: 'Beast + Bottle',
@@ -198,13 +198,13 @@ exports.seed = function(knex, Promise) {
         }),
         knex('restaurants').insert({
           restaurant_name: 'MEZCAL COLFAX',
-          style: 'Slovak',
+          style: 'Mexican',
           street: '3230 E Colfax Ave',
           city: 'Denver',
           state: 'CO',
           zip: 80206,
           images: 'http://diningout.com/denverboulder/wp-content/uploads/sites/13/2015/06/Mezcal.jpg',
-          description: faker.company.catchPhraseDescriptor()
+          description: 'Homestyle Mexican eats, margaritas & a long tequila list in a high-energy dining room.'
         })
       ]);
     });
