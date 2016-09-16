@@ -4,11 +4,11 @@ const knex = require('../db/knex');
 const indexController = require('../controllers/index');
 
 router.get('/:id/reviews/new', indexController.isAuthenticated, (req, res, next) => {
-  const renderObject = {};
+  const renderObject = req.renderObject;
   renderObject.title = req.query.name;
   renderObject.restaurant_id = req.params.id;
   renderObject.name = req.session.user.name;
-  renderObject.user_id = Number(req.session.user.dataId);
+  renderObject.user_id = parseInt(req.session.user.dataId);
   res.render('new_review', renderObject);
 });
 
@@ -25,12 +25,7 @@ router.post('/:id/reviews/new', indexController.isAuthenticated, (req, res, next
   const text = req.body.text;
   const user_id = req.body.user_id;
   const restaurant_id = req.params.id;
-  const renderObject = {};
-  renderObject.title = req.query.name;
-  renderObject.restaurant_id = req.params.id;
-  renderObject.name = req.session.user.name;
-  renderObject.user_id = parseInt(req.session.user.dataId);
-  const indexController = require('../controllers/index');
+  const renderObject = req.renderObject;
 
   knex('reviews')
   .insert({

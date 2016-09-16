@@ -5,7 +5,7 @@ const knex = require('../db/knex');
 const indexController = require('../controllers/index');
 
 router.get('/', indexController.isAuthenticated, function (req, res, next) {
-  const renderObject = {};
+  const renderObject = req.renderObject;
   renderObject.title = 'Sign Up';
   res.render('signup', renderObject);
 });
@@ -25,11 +25,7 @@ router.post('/new', indexController.isAuthenticated, (req, res, next) => {
     res.redirect('/signup');
   })
   .catch(err => {
-    res.status(500).json({
-      status: 'error',
-      message: 'server error'
-    });
+    return next();
   });
-  console.log(req.body.first_name);
 });
 module.exports = router;
