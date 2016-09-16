@@ -50,10 +50,23 @@ nav .wrapper {
 footer {
  background-color: black;
  margin-top: 2rem;
+ margin-bottom: 0px;
 }
 
 footer p {
   color: white;
   padding: 16px;
   margin-bottom: 0px;
+}
+
+.submitLink {
+  background-color: transparent;
+  text-decoration: underline;
+  border: none;
+  color: blue;
+  cursor: pointer;
+}
+
+submitLink:focus {
+  outline: none;
 }

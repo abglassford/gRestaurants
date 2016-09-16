@@ -27,9 +27,7 @@
           <p class="form-control-static"></p>
 
       </div>
-<!-- ------------------- Start Error Form ----------------------------------- -->
       {% if errors.length %}
-<!-- border: 2px solid red; border-radius: 7px; -->
       <div class="form-group">
           <label for="restaurantName"><h4>Name</h4></label>
           <input type="text" name="name" id="restaurantName" class="form-control" value="{{formValues.name}}" min="1">
@@ -130,7 +128,6 @@
             <option value="option">Bhutanese</option>
             <option value="option">Bolivian</option>
             <option value="option">Bosnia</option>
-            <option value="option">and</option>
             <option value="option">Herzegovina</option>
             <option value="option">Botswana</option>
             <option value="option">Brazilian</option>
@@ -326,7 +323,6 @@
         </div>
 
       {% else %}
-<!-- ------------------- Start Regular Form ----------------------------------- -->
 
       <div class="form-group">
           <label for="restaurantName"><h4>Name</h4></label>

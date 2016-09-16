@@ -5,8 +5,9 @@ const bcrypt = require('bcrypt');
 const indexController = require('../controllers/index');
 
 router.get('/', indexController.isAuthenticated, function (req, res, next) {
+
   const renderObject = req.renderObject;
-  renderObject.title = 'Log In';
+  renderObject.title = 'gRestaurants';
   res.render('login', renderObject);
 });
 
