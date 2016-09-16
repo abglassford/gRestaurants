@@ -29,12 +29,12 @@
       </div>
       {% if errors.length %}
       <div class="form-group">
-          <label for="restaurantName"><h4>Name</h4></label>
-          <input type="text" name="name" id="restaurantName" class="form-control" value="{{formValues.name}}" min="1">
+          <label for="restaurant_name"><h4>Name</h4></label>
+          <input type="text" name="restaurant_name" id="restaurant_name" class="form-control" value="{{formValues.name}}" min="1">
         </div>
         <div class="form-group">
-          <label for="location"><h4>Location</h4></label>
-          <input type="text" name="city" id="location" class="form-control" value="{{formValues.city}}">
+          <label for="city"><h4>City</h4></label>
+          <input type="text" name="city" id="city" class="form-control" value="{{formValues.city}}">
         </div>
         <div class="form-group">
           <label for="zip"><h4>Zip</h4></label>
@@ -325,12 +325,12 @@
       {% else %}
 
       <div class="form-group">
-          <label for="restaurantName"><h4>Name</h4></label>
-          <input type="text" name="name" id="restaurantName" class="form-control" placeholder="Name" min="1">
+          <label for="restaurant_name"><h4>Name</h4></label>
+          <input type="text" name="restaurant_name" id="restaurant_name" class="form-control" placeholder="Name" min="1">
         </div>
         <div class="form-group">
-          <label for="location"><h4>Location</h4></label>
-          <input type="text" name="city" id="location" class="form-control" placeholder="City">
+          <label for="city"><h4>city</h4></label>
+          <input type="text" name="city" id="city" class="form-control" placeholder="City">
         </div>
         <div class="form-group">
           <label for="zip"><h4>Zip</h4></label>
@@ -622,6 +622,7 @@
 
         <input type="hidden" name="formType" value="new_restaurant">
         <input type="hidden" name="user_id" value="">
+        <br>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
     </div>

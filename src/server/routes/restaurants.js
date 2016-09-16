@@ -8,17 +8,17 @@ router.get('/', indexController.isAuthenticated, function (req, res, next) {
   const renderObject = req.renderObject;
   knex('restaurants')
   .then(data => {
-    data.forEach(object => {
-      object.stringified = JSON.stringify(object);
+      data.forEach(object => {
+        object.stringified = JSON.stringify(object);
+      });
+      renderObject.data = data;
+      renderObject.title = 'gRestaurants';
+      renderObject.session = req.session.user || null;
+      res.render('restaurants', renderObject);
+    }).catch(err => {
+      return next(err);
     });
-    renderObject.data = data;
-    renderObject.title = 'gRestaurants';
-    renderObject.session = req.session.user || null;
-    res.render('restaurants', renderObject);
-  }).catch(err => {
-    return next(err);
   });
-});
 
 router.get('/new', (req, res, next) => {
   const renderObject = req.renderObject;
@@ -85,7 +85,7 @@ router.get('/update/:id', indexController.isAuthenticated, function (req, res, n
   });
 });
 
-router.put('/updateSubmit/:id', indexController.isAuthenticated, (req, res, next) => {
+router.put('/updateSubmit/:id', validation.verify, indexController.isAuthenticated, (req, res, next) => {
   const id = parseInt(req.params.id);
   const restaurant_name = req.body.restaurant_name;
   const city = req.body.city;
@@ -128,7 +128,7 @@ router.put('/updateSubmit/:id', indexController.isAuthenticated, (req, res, next
 
 router.post('/new', validation.verify, indexController.isAuthenticated, (req, res, next) => {
   // grab the values to add to the db via req.body
-  const restaurant_name = req.body.name;
+  const restaurant_name = req.body.restaurant_name;
   const city = req.body.city;
   const state = req.body.state;
   const style = req.body.style;
@@ -149,7 +149,31 @@ router.post('/new', validation.verify, indexController.isAuthenticated, (req, re
   })
   .then((results) => {
     // redirect user
-    res.redirect('/');
+    res.redirect('/restaurants');
+  })
+  .catch((err) => {
+    return next(err);
+  });
+});
+
+router.delete('/delete/:id', (req, res, next) => {
+  const id = parseInt(req.params.id);
+  knex('restaurants')
+  .del()
+  .where('id', id)
+  .returning('*')
+  .then((results) => {
+    if (results.length) {
+      res.status(200).json({
+        status: 'success',
+        message: `Restaurant is gone!`
+      });
+    } else {
+      res.status(404).json({
+        status: 'errror',
+        message: 'That restaurant id does not exist'
+      });
+    }
   })
   .catch((err) => {
     return next(err);
