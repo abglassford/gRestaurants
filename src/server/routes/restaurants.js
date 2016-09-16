@@ -128,7 +128,7 @@ router.put('/updateSubmit/:id', validation.verify, indexController.isAuthenticat
 
 router.post('/new', validation.verify, indexController.isAuthenticated, (req, res, next) => {
   // grab the values to add to the db via req.body
-  const restaurant_name = req.body.name;
+  const restaurant_name = req.body.restaurant_name;
   const city = req.body.city;
   const state = req.body.state;
   const style = req.body.style;
@@ -149,7 +149,7 @@ router.post('/new', validation.verify, indexController.isAuthenticated, (req, re
   })
   .then((results) => {
     // redirect user
-    res.redirect('/');
+    res.redirect('/restaurants');
   })
   .catch((err) => {
     return next(err);

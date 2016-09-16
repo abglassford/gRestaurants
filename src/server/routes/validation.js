@@ -7,7 +7,7 @@ function verify(req, res, next) {
   // req.checkBody('style', 'style cannot be empty').notEmpty();
   //req.checkBody('images', 'Image must be valid URL').isAlpha();
   // req.checkBody('description', 'Description cannot be empty').notEmpty();
-  req.checkBody('zip', 'Zip must in format of 80206').notEmpty().len(5);
+  req.checkBody('zip', 'Zip must in format of 80206').notEmpty().isInt().len(5);
   req.checkBody('street', 'Street name cannot be empty').notEmpty();
 
   //req.checkBody('email', 'Must be a valid email').isEmail();
@@ -32,6 +32,7 @@ function verify(req, res, next) {
     };
     console.log(renderObject.errors);
     if (req.body.formType === 'new_restaurant') {
+      console.log('xxx');
       return res.render('new_restaurant', renderObject).status(400);
     }
     if (req.body.formType === 'edit_restaurant') {
