@@ -4,7 +4,7 @@ function verify(req, res, next) {
   req.checkBody('name', 'Restaurant name cannot be empty').notEmpty();
   req.checkBody('city', 'City name cannot be empty').notEmpty();
   req.checkBody('state', 'State name cannot be empty').notEmpty();
-  // req.checkBody('cuisine', 'Cuisine cannot be empty').notEmpty();
+  // req.checkBody('style', 'style cannot be empty').notEmpty();
   //req.checkBody('images', 'Image must be valid URL').isAlpha();
   // req.checkBody('description', 'Description cannot be empty').notEmpty();
   req.checkBody('zip', 'Zip must in format of 80206-3452').notEmpty().len(10);
@@ -24,7 +24,7 @@ function verify(req, res, next) {
       name: req.body.name,
       city: req.body.city,
       state: req.body.state,
-      cuisine: req.body.cuisine,
+      style: req.body.style,
       images: req.body.images,
       description: req.body.description,
       zip: req.body.zip,

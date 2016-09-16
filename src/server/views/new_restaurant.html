@@ -16,54 +16,6 @@
         {% for error in errors %}
           <li>{{error.msg}}</li>
 
-          {% if errors.param == 'name' %}
-          <script> $( document ).ready(function() {
-            $("#restaurantName").css({"border": "2px solid red", "border-radius": "7px"});
-          }); </script>
-          {% endif %}
-
-          {% if errors.param == 'city' %}
-          <script> $( document ).ready(function() {
-            $("#location").css({"border": "2px solid red", "border-radius": "7px"});
-          }); </script>
-          {% endif %}
-
-          {% if errors.param == 'state' %}
-          <script> $( document ).ready(function() {
-            $("#state").css({"border": "2px solid red", "border-radius": "7px"});
-          }); </script>
-          {% endif %}
-
-          {% if errors.param == 'cuisine' %}
-          <script> $( document ).ready(function() {
-            $("#cuisine").css({"border": "2px solid red", "border-radius": "7px"});
-          }); </script>
-          {% endif %}
-
-          {% if errors.param == 'images' %}
-          <script> $( document ).ready(function() {
-            $("#images").css({"border": "2px solid red", "border-radius": "7px"});
-          }); </script>
-          {% endif %}
-
-          {% if errors.param == 'description' %}
-          <script> $( document ).ready(function() {
-            $("#description").css({"border": "2px solid red", "border-radius": "7px"});
-          }); </script>
-          {% endif %}
-
-          {% if errors.param == 'zip' %}
-          <script> $( document ).ready(function() {
-            $("#zip").css({"border": "2px solid red", "border-radius": "7px"});
-          }); </script>
-          {% endif %}
-
-          {% if errors.param == 'street' %}
-          <script> $( document ).ready(function() {
-            $("#street").css({"border": "2px solid red", "border-radius": "7px"});
-          }); </script>
-          {% endif %}
-
         {% endfor %}
       </ul>
       <br>
@@ -154,10 +106,10 @@
         </div>
         <br>
         <div class="form-group">
-          <label for="cuisine"><h4>Cuisine</h4></label>
+          <label for="style"><h4>style</h4></label>
         </div>
         <div class="form-group">
-          <select class="" name="cuisine" id="cuisine">
+          <select class="" name="style" id="style">
             <option value="option">Afghan</option>
             <option value="option">Albanian</option>
             <option value="option">Algerian</option>
@@ -451,10 +403,10 @@
         </div>
         <br>
         <div class="form-group">
-          <label for="cuisine"><h4>Cuisine</h4></label>
+          <label for="style"><h4>style</h4></label>
         </div>
         <div class="form-group">
-          <select class="" name="cuisine" id="cuisine">
+          <select class="" name="style" id="style">
             <option value="option">Afghan</option>
             <option value="option">Albanian</option>
             <option value="option">Algerian</option>
