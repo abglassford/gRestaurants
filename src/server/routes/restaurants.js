@@ -12,6 +12,7 @@ router.get('/', function (req, res, next) {
     });
     renderObject.data = renderData;
     renderObject.title = 'gRestaurants';
+    renderObject.session = req.session.user || null;
     res.render('restaurants', renderObject);
   }).catch(err => {
     return next(err);
