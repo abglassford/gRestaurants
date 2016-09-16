@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
+const validation = require('./validation');
 
 router.get('/', function (req, res, next) {
   const renderObject = {};
-  console.log(req.session);
   knex('restaurants')
   .then(data => {
     let renderData = data.slice(0, 9);
@@ -13,6 +13,7 @@ router.get('/', function (req, res, next) {
     });
     renderObject.data = renderData;
     renderObject.title = 'gRestaurants';
+    renderObject.session = req.session.user || null;
     res.render('restaurants', renderObject);
   }).catch(err => {
     return next(err);
@@ -27,7 +28,12 @@ router.get('/new', (req, res, next) => {
 router.get('/:id', function (req, res, next) {
   const renderObject = {};
   const restaurantId = req.params.id;
-
+  if (req.session.user === undefined) {
+    req.session.user = null;
+  }
+  else {
+    renderObject.admin = req.session.user.admin;
+  }
   let restaurantPromise =
   knex('restaurants')
   .where('id', restaurantId)
@@ -68,7 +74,7 @@ router.get('/update/:id', function (req, res, next) {
     res.render('edit_restaurant', renderObject);
   })
   .catch(err => {
-    next(err);
+    return next(err);
   });
 });
 
@@ -77,7 +83,7 @@ router.put('/updateSubmit/:id', (req, res, next) => {
   const restaurant_name = req.body.restaurant_name;
   const city = req.body.city;
   const state = req.body.state;
-  const style = req.body.cuisine;
+  const style = req.body.style;
   const images = req.body.images;
   const description = req.body.description;
   const zip = req.body.zip;
@@ -116,12 +122,12 @@ router.put('/updateSubmit/:id', (req, res, next) => {
   });
 });
 
-router.post('/new', (req, res, next) => {
+router.post('/new', validation.verify, (req, res, next) => {
   // grab the values to add to the db via req.body
   const restaurant_name = req.body.name;
   const city = req.body.city;
   const state = req.body.state;
-  const style = req.body.cuisine;
+  const style = req.body.style;
   const images = req.body.images;
   const description = req.body.description;
   const zip = req.body.zip;

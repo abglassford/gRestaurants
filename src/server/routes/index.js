@@ -14,6 +14,7 @@ router.get('/', (req, res, next) => {
     }
     renderObject.data = featureArray;
     renderObject.title = 'gRestaurants';
+    renderObject.sessionName = req.session.user.name || null;
     res.render('index', renderObject);
   }).catch(err => next(err));
 });

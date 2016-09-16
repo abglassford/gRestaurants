@@ -6,5 +6,7 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropColumn('admin');
+  return knex.schema.table('users', table => {
+    table.dropColumn('admin');
+  })
 };
