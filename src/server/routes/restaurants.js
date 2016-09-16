@@ -8,7 +8,7 @@ router.get('/', indexController.isAuthenticated, function (req, res, next) {
   const renderObject = {};
   knex('restaurants')
   .then(data => {
-    let renderData = data.slice(0, 9);
+    let renderData = data;
     renderData.forEach(object => {
       object.stringified = JSON.stringify(object);
     });
