@@ -31,7 +31,12 @@ function verify(req, res, next) {
       street: req.body.street
     };
     console.log(renderObject.errors);
-    return res.render('new_restaurant', renderObject).status(400);
+    if (req.body.formType === 'new_restaurant') {
+      return res.render('new_restaurant', renderObject).status(400);
+    }
+    if (req.body.formType === 'edit_restaurant') {
+      return res.render('edit_restaurant', renderObject).status(400);
+    }
   }
   else {
     return next();
