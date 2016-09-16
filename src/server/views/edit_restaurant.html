@@ -1,0 +1,353 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <div class="container col-xs-6">
+    <h1>Edit Restaurant</h1>
+    <form id="edit_restaurant">
+      <div class="form-group">
+          <label for="rating">Logged In As:</label>
+          <p class="form-control-static"></p>
+      </div>
+      <div class="form-group">
+          <label for="restaurantName"><h4>Name</h4></label>
+          <input type="text" name="name" id="restaurantName" class="form-control" value="{{data[0].restaurant_name}}" min="1">
+        </div>
+        <div class="form-group">
+          <label for="location"><h4>Location</h4></label>
+          <input type="text" name="city" id="location" class="form-control" value="{{data[0].city}}">
+        </div>
+        <div class="form-group">
+          <label for="zip"><h4>Zip</h4></label>
+          <input type="text" name="zip" id="zip" class="form-control" value="{{data[0].zip}}">
+        </div>
+        <div class="form-group">
+          <label for="street"><h4>Street</h4></label>
+          <input type="text" name="street" id="street" class="form-control" value="{{data[0].street}}">
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="state"><h4>State</h4></label>
+          <select name="state" id="state">
+            <option value="{{data[0].state}}">{{data[0].state}}</option>
+          	<option value="AL">Alabama</option>
+          	<option value="AK">Alaska</option>
+          	<option value="AZ">Arizona</option>
+          	<option value="AR">Arkansas</option>
+          	<option value="CA">California</option>
+          	<option value="CO">Colorado</option>
+          	<option value="CT">Connecticut</option>
+          	<option value="DE">Delaware</option>
+          	<option value="DC">District Of Columbia</option>
+          	<option value="FL">Florida</option>
+          	<option value="GA">Georgia</option>
+          	<option value="HI">Hawaii</option>
+          	<option value="ID">Idaho</option>
+          	<option value="IL">Illinois</option>
+          	<option value="IN">Indiana</option>
+          	<option value="IA">Iowa</option>
+          	<option value="KS">Kansas</option>
+          	<option value="KY">Kentucky</option>
+          	<option value="LA">Louisiana</option>
+          	<option value="ME">Maine</option>
+          	<option value="MD">Maryland</option>
+          	<option value="MA">Massachusetts</option>
+          	<option value="MI">Michigan</option>
+          	<option value="MN">Minnesota</option>
+          	<option value="MS">Mississippi</option>
+          	<option value="MO">Missouri</option>
+          	<option value="MT">Montana</option>
+          	<option value="NE">Nebraska</option>
+          	<option value="NV">Nevada</option>
+          	<option value="NH">New Hampshire</option>
+          	<option value="NJ">New Jersey</option>
+          	<option value="NM">New Mexico</option>
+          	<option value="NY">New York</option>
+          	<option value="NC">North Carolina</option>
+          	<option value="ND">North Dakota</option>
+          	<option value="OH">Ohio</option>
+          	<option value="OK">Oklahoma</option>
+          	<option value="OR">Oregon</option>
+          	<option value="PA">Pennsylvania</option>
+          	<option value="RI">Rhode Island</option>
+          	<option value="SC">South Carolina</option>
+          	<option value="SD">South Dakota</option>
+          	<option value="TN">Tennessee</option>
+          	<option value="TX">Texas</option>
+          	<option value="UT">Utah</option>
+          	<option value="VT">Vermont</option>
+          	<option value="VA">Virginia</option>
+          	<option value="WA">Washington</option>
+          	<option value="WV">West Virginia</option>
+          	<option value="WI">Wisconsin</option>
+          	<option value="WY">Wyoming</option>
+          </select>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="style"><h4>style</h4></label>
+        </div>
+        <div class="form-group">
+          <select name="style" id="style">
+            <option value="{{data[0].style}}">{{data[0].style}}</option>
+            <option value="option">Afghan</option>
+            <option value="option">Albanian</option>
+            <option value="option">Algerian</option>
+            <option value="option">American</option>
+            <option value="option">Angolan</option>
+            <option value="option">Argentine</option>
+            <option value="option">Armenian</option>
+            <option value="option">Australian</option>
+            <option value="option">Austrian</option>
+            <option value="option">Azerbaijani</option>
+            <option value="option">Bahraini</option>
+            <option value="option">Bangladeshi</option>
+            <option value="option">Barbadian</option>
+            <option value="option">Belarusian</option>
+            <option value="option">Belgian</option>
+            <option value="option">Belizean</option>
+            <option value="option">Beninese</option>
+            <option value="option">Bhutanese</option>
+            <option value="option">Bolivian</option>
+            <option value="option">Bosnia</option>
+            <option value="option">and</option>
+            <option value="option">Herzegovina</option>
+            <option value="option">Botswana</option>
+            <option value="option">Brazilian</option>
+            <option value="option">British</option>
+            <option value="option">English</option>
+            <option value="option">Scottish</option>
+            <option value="option">Welsh</option>
+            <option value="option">Cornish</option>
+            <option value="option">Bruneian</option>
+            <option value="option">Bulgarian</option>
+            <option value="option">Burkinabé</option>
+            <option value="option">Burmese</option>
+            <option value="option">Burundian</option>
+            <option value="option">Cambodian</option>
+            <option value="option">Cameroonian</option>
+            <option value="option">Canadian</option>
+            <option value="option">Canadian</option>
+            <option value="option">Chinese</option>
+            <option value="option">Quebec</option>
+            <option value="option">Central</option>
+            <option value="option">African</option>
+            <option value="option">Republic</option>
+            <option value="option">Chadian</option>
+            <option value="option">Chilean</option>
+            <option value="option">Chinese</option>
+            <option value="option">Colombian</option>
+            <option value="option">Congolese</option>
+            <option value="option">Croatian</option>
+            <option value="option">Cuban</option>
+            <option value="option">Cypriot</option>
+            <option value="option">Czech</option>
+            <option value="option">Danish</option>
+            <option value="option">Djiboutian</option>
+            <option value="option">Dominican</option>
+            <option value="option">Dominican</option>
+            <option value="option">Republic</option>
+            <option value="option">Dutch</option>
+            <option value="option">East Timorese</option>
+            <option value="option">Ecuadorian</option>
+            <option value="option">Egyptian</option>
+            <option value="option">Emirati</option>
+            <option value="option">Equatorial</option>
+            <option value="option">Guinean</option>
+            <option value="option">Eritrean</option>
+            <option value="option">Estonian</option>
+            <option value="option">Ethiopian</option>
+            <option value="option">Fijian</option>
+            <option value="option">Filipino</option>
+            <option value="option">Finnish</option>
+            <option value="option">French</option>
+            <option value="option">Occitan</option>
+            <option value="option">Gabonese</option>
+            <option value="option">Gambian</option>
+            <option value="option">Georgian</option>
+            <option value="option">German</option>
+            <option value="option">Ghanaian</option>
+            <option value="option">Greek</option>
+            <option value="option">Guatemalan</option>
+            <option value="option">Guinean</option>
+            <option value="option">Haitian</option>
+            <option value="option">Honduran</option>
+            <option value="option">Hong Kong</option>
+            <option value="option">Hungarian</option>
+            <option value="option">Icelandic</option>
+            <option value="option">Indian</option>
+            <option value="option">Indonesian</option>
+            <option value="option">Iranian</option>
+            <option value="option">Iraqi</option>
+            <option value="option">Irish</option>
+            <option value="option">Israeli</option>
+            <option value="option">Italian</option>
+            <option value="option">Sicilian</option>
+            <option value="option">Ivorian</option>
+            <option value="option">Jamaican</option>
+            <option value="option">Japanese</option>
+            <option value="option">Jordanian</option>
+            <option value="option">Kazakh</option>
+            <option value="option">Kenyan</option>
+            <option value="option">Korean</option>
+            <option value="option">Kosovan</option>
+            <option value="option">Kuwaiti</option>
+            <option value="option">Kyrgyz</option>
+            <option value="option">Lao</option>
+            <option value="option">Latvian</option>
+            <option value="option">Lebanese</option>
+            <option value="option">Lesotho</option>
+            <option value="option">Liberian</option>
+            <option value="option">Libyan</option>
+            <option value="option">Liechtensteiner</option>
+            <option value="option">Lithuanian</option>
+            <option value="option">Luxembourg</option>
+            <option value="option">Macau</option>
+            <option value="option">Macedonian</option>
+            <option value="option">Malagasy</option>
+            <option value="option">Malawian</option>
+            <option value="option">Malaysian</option>
+            <option value="option">Chinese</option>
+            <option value="option">Indian</option>
+            <option value="option">Eurasian</option>
+            <option value="option">Malian</option>
+            <option value="option">Maltese</option>
+            <option value="option">Mauritanian</option>
+            <option value="option">Mexican</option>
+            <option value="option">Moldovan</option>
+            <option value="option">Monégasque</option>
+            <option value="option">Mongolian</option>
+            <option value="option">Moroccan</option>
+            <option value="option">Mozambican</option>
+            <option value="option">Namibian</option>
+            <option value="option">Nepalese</option>
+            <option value="option">New Zealand</option>
+            <option value="option">Nigerian</option>
+            <option value="option">Nigerien</option>
+            <option value="option">Norwegian</option>
+            <option value="option">Niuean</option>
+            <option value="option">Omani</option>
+            <option value="option">Pakistani</option>
+            <option value="option">Palestinian</option>
+            <option value="option">Panamanian</option>
+            <option value="option">Peruvian</option>
+            <option value="option">Polish</option>
+            <option value="option">Portuguese</option>
+            <option value="option">Qatari</option>
+            <option value="option">Romanian</option>
+            <option value="option">Russian</option>
+            <option value="option">Rwandan</option>
+            <option value="option">Salvadoran</option>
+            <option value="option">Saint</option>
+            <option value="option">Helena</option>
+            <option value="option">Saint</option>
+            <option value="option">Lucian</option>
+            <option value="option">Sammarinese</option>
+            <option value="option">São Tomé</option>
+            <option value="option">Príncipe Saudi Arabian</option>
+            <option value="option">Senegalese</option>
+            <option value="option">Serbian</option>
+            <option value="option">Seychelles</option>
+            <option value="option">Sierra</option>
+            <option value="option">Leonean</option>
+            <option value="option">Singaporean</option>
+            <option value="option">Slovak</option>
+            <option value="option">Slovenian</option>
+            <option value="option">Somali</option>
+            <option value="option">South African</option>
+            <option value="option">Spanish</option>
+            <option value="option">Andalusian</option>
+            <option value="option">Asturian</option>
+            <option value="option">Basque</option>
+            <option value="option">Catalan</option>
+            <option value="option">Galician</option>
+            <option value="option">Sri Lankan</option>
+            <option value="option">Sudanese</option>
+            <option value="option">Swazi</option>
+            <option value="option">Swedish</option>
+            <option value="option">Swiss</option>
+            <option value="option">Syrian</option>
+            <option value="option">Taiwanese</option>
+            <option value="option">Tajik</option>
+            <option value="option">Tanzanian</option>
+            <option value="option">Thai</option>
+            <option value="option">Tibetan</option>
+            <option value="option">Togolese</option>
+            <option value="option">Tunisian</option>
+            <option value="option">Turkish</option>
+            <option value="option">Trinidadian and Tobagonian</option>
+            <option value="option">Ugandan</option>
+            <option value="option">Ukrainian</option>
+            <option value="option">United</option>
+            <option value="option">States</option>
+            <option value="option">American</option>
+            <option value="option">Chinese</option>
+            <option value="option">New American</option>
+            <option value="option">Uruguayan</option>
+            <option value="option">Uzbek</option>
+            <option value="option">Venezuelan</option>
+            <option value="option">Vietnamese</option>
+            <option value="option">Western</option>
+            <option value="option">Saharan</option>
+            <option value="option">Yemeni</option>
+            <option value="option">Zambian</option>
+            <option value="option">Zimbabwean</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <h4>Image</h4><input type="url" name="images" id="images" class="form-control form-inline" value="{{data[0].images}}">
+        </div>
+        <div class="form-group">
+            <label for="description">Short Bio</label>
+            <textarea rows="5" class="form-control col-xs-6" name="description" id="description">{{data[0].description}}</textarea>
+
+        </div>
+
+        <input type="hidden" id ="restaurant_id" name="restaurant_id" value="{{data[0].id}}">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+
+<script>
+    $(document).on('submit', '#edit_restaurant', function(event) {
+      event.preventDefault();
+      const id = $('#restaurant_id').val();
+      const restaurant_name = $('#restaurantName').val();
+      const city = $('#city').val();
+      const state = $('#state').val();
+      const style = $('#style').val();
+      const images = $('#images').val();
+      const description = $('#description').val();
+      const zip = $('#zip').val();
+      const street = $('#street').val();
+      const payload = {
+        id: id,
+        restaurant_name: restaurant_name,
+        city: city,
+        state: state,
+        style: style,
+        images: images,
+        description: description,
+        zip: zip,
+        street: street
+      };
+      $.ajax({
+        type: 'PUT',
+        url: `/restaurants/updateSubmit/${id}`,
+        data: payload
+      })
+      .done((data) => {
+        //$('#myModal').modal('toggle');
+        location.reload();
+        console.log(data);
+      })
+      .fail((err) => {
+        console.log(err);
+      });
+    });
+</script>
+
+{% endblock %}

@@ -1,25 +1,21 @@
 {% extends "_base.html" %}
 
 {% block css %}
- <link rel="stylesheet" href="/css/index.css">
+ <link rel="stylesheet" href="/css/restaurants.css">
 {% endblock %}
 
-{% block title %}
-{% endblock %}
+{% block title %}{% endblock %}
 
 {% block content %}
 
-  <div class="pageLogo">
-    <img src="https://hd.unsplash.com/photo-1451479456262-b94f205059be">
-  </div>
-  <div class="featured">
-    <h2>Featured Restaurants</h2>
+  <div class="restaurants container">
       {%for restaurant in data%}
     <div class="restaurantDiv col-xs-4">
       <a href="/restaurants/{{restaurant.id}}" class="restaurantLink"><img class="restImg"src="{{restaurant.images}}" alt="image" /></a>
       <h2><a href="/restaurants/{{restaurant.id}}"class="restaurantLink" >{{restaurant.restaurant_name}}</a></h2>
-      <h4>{{restaurant.city}}, {{restaurant.state}}</h4>
-      <h4>{{restaurant.description}}</h4>
+      <h3>{{restaurant.style}}</h3>
+      <h4>{{restaurant.location}}</h4>
+      <h4>{{restaurant.rating}}</h4>
     </div>
       {%endfor%}
   </div>

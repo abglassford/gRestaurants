@@ -1,0 +1,18 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.pageLogo img {
+  width:100%;
+  padding:0 5%
+}
+
+.restImg {
+  height: 100%;
+}
+
+.featured {
+  padding: 0 10%;
+  text-align: center;
+  height: 400px;
+}
