@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 
-const indexController = require('../controllers/index');
-
 router.get('/', (req, res, next) => {
   const renderObject = {};
   const featureArray = [];
@@ -14,7 +12,7 @@ router.get('/', (req, res, next) => {
     }
     renderObject.data = featureArray;
     renderObject.title = 'gRestaurants';
-    renderObject.sessionName = req.session.user.name || null;
+    renderObject.sessionName = req.session.user || null;
     res.render('index', renderObject);
   }).catch(err => next(err));
 });

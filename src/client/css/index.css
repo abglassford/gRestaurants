@@ -7,16 +7,12 @@ body {
   padding:0 5%
 }
 
-.restaurantDiv{
-  height: 180px;
-}
-
 .restImg {
-  height: 100px;
+  height: 100%;
 }
 
-.featureds {
+.featured {
   padding: 0 10%;
   text-align: center;
-  margin-bottom:3 rem
+  height: 400px;
 }

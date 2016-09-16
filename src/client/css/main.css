@@ -1,6 +1,5 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  margin-bottom: 100px
 }
 
 a {
@@ -22,7 +21,6 @@ a:hover {
 }
 
 nav {
-  /*position: fixed;*/
   width: 100%;
   margin-top: 0px;
   height: 100px;
@@ -50,23 +48,9 @@ nav .wrapper {
 }
 
 footer {
- position: fixed;
- right: 0;
- left: 0;
- z-index: 1030;
- bottom: 0px;
- margin-bottom: 0;
- border-width: 1px 0 0;
  background-color: black;
- clear:both;
+ margin-top: 2rem;
 }
-
-/*footer {
-  right:  0;
-  bottom:0;
-  left: 0;
-  width: 100%;
-}*/
 
 footer p {
   color: white;
