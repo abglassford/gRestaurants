@@ -4,7 +4,7 @@ const knex = require('../db/knex');
 const indexController = require('../controllers/index');
 
 router.get('/', indexController.isAuthenticated, (req, res, next) => {
-  const renderObject = {};
+  const renderObject = req.renderObject;
   const featureArray = [];
   knex('restaurants')
   .then(data => {
