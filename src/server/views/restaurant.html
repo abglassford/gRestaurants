@@ -3,9 +3,8 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-  <div class="restaurants">
+  <div class="container restaurants">
     <div class="row">
-
       {% if admin == false %}
       <div class="col-xs-4">
         <h3>
@@ -14,6 +13,13 @@
       </div>
       {% endif %}
       {%for restaurant in restaurants%}
+        <div class="restaurantDiv col-xs-2">
+          <h1>{{restaurant.restaurant_name}}</h1>
+          <img class="restImg"src="{{restaurant.images}}" alt="image"/>
+          <h3>Cuisine: {{restaurant.style}}</h3>
+          <h4>{{restaurant.location}}</h4>
+          <h4>{{restaurant.rating}}</h4>
+        </div>
       <div class="restaurantDiv col-xs-offset-2 col-xs-2">
         <h1>{{restaurant.restaurant_name}}</h1>
         <img class="restImg"src="{{restaurant.images}}" alt="image"/>
@@ -34,7 +40,7 @@
 
       </div>
         {%endfor%}
-      <div class="reviewsDiv col-xs-6">
+      <div class="reviewsDiv col-xs-offset-4 col-xs-4">
           <h2>{{reviews.length}} Review{% if reviews.length != 1 %}s{% endif %}</h2>
         {% for review in reviews%}
         <h2>{{review.date}}</h2>
@@ -44,6 +50,14 @@
         {% endfor%}
       </div>
     </div>
+    {%for restaurant in restaurants%}
+    <div class="row">
+      <div class="map">
+        <iframe width="250" height="250" frameborder="0" style="border:0" src={{restaurant.map}}>
+        </iframe>
+      </div>
+    </div>
+    {%endfor%}
   </div>
 
   <script>
