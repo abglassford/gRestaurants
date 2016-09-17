@@ -78,14 +78,14 @@
             {{employee.position}}
           </td>
           <td>
-            <form  action="/restaurants/{{restaurants[0].id}}/employees/edit" method="post">
+            <form  action="/restaurants/{{restaurants[0].id}}/employees/edit?_method=PUT" method="post">
               <input type="hidden" name="id" value="{{employee.id}}">
               <input type="hidden" name="first_name" value="{{employee.first_name}}">
               <input type="hidden" name="last_name" value="{{employee.last_name}}">
               <input type="hidden" name="position" value="{{employee.position}}">
               <input class="submitLink" type="submit" name="submit" value="Edit Employee">
             </form>
-            <form  action="/restaurants/{{restaurants[0].id}}/employees/delete" method="post">
+            <form  action="/restaurants/{{restaurants[0].id}}/employees/delete?_method=Delete" method="post">
               <input type="hidden" name="id" value="{{employee.id}}">
               <input class="submitLink" type="submit" name="submit" value="Delete Employee">
             </form>
@@ -113,12 +113,12 @@
       {% if user_id == review.user_id%}
       <div class="">
         <h3>
-          <form  action="/restaurants/{{restaurants[0].id}}/reviews/edit" method="post">
+          <form  action="/restaurants/{{restaurants[0].id}}/reviews/edit?_method=PUT" method="post">
             <input type="hidden" name="id" value="{{restaurants[0].id}}">
             <input type="hidden" name="name" value="{{restaurants[0].name}}">
             <input class="submitLink" type="submit" name="submit" value="Edit Review">
           </form>
-          <form  action="/restaurants/{{restaurants[0].id}}/reviews/delete" method="post">
+          <form  action="/restaurants/{{restaurants[0].id}}/reviews/delete?_method=DELETE" method="post">
             <input type="hidden" name="id" value="{{restaurants[0].id}}">
             <input type="hidden" name="name" value="{{restaurants[0].name}}">
             <input class="submitLink" type="submit" name="submit" value="Delete Review">
