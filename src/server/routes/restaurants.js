@@ -162,28 +162,48 @@ router.post('/new', validation.verify, indexController.isAuthenticated, (req, re
 });
 
 router.delete('/delete/:id', (req, res, next) => {
-  const id = parseInt(req.params.id);
-  knex('restaurants')
-  .del()
-  .where('id', id)
-  .returning('*')
-  .then((results) => {
-    if (results.length) {
-      res.status(200).json({
-        status: 'success',
-        message: `Restaurant is gone!`
-      });
-    } else {
-      res.status(404).json({
-        status: 'errror',
-        message: 'That restaurant id does not exist'
-      });
-    }
-  })
-  .catch((err) => {
-    return next(err);
+    const id = parseInt(req.params.id);
+    return knex('reviews').del().where('restaurant_id', id)
+  .then(() => {
+      return knex('employees').del().where('restaurant_id', id);
+    })
+    .then(() => {
+      return knex('restaurants').del().where('id', id);
+    })
+    .then(() => {
+        res.status(200).json({
+          status: 'success',
+          message: `Restaurant is gone!`
+        });
+      })
+    .catch((err) => {
+      return next(err);
+    });
   });
-});
+
+// router.delete('/delete/:id', (req, res, next) => {
+//   const id = parseInt(req.params.id);
+//   knex('restaurants')
+//   .del()
+//   .where('id', id)
+//   .returning('*')
+//   .then((results) => {
+//     if (results.length) {
+//       res.status(200).json({
+//         status: 'success',
+//         message: `Restaurant is gone!`
+//       });
+//     } else {
+//       res.status(404).json({
+//         status: 'errror',
+//         message: 'That restaurant id does not exist'
+//       });
+//     }
+//   })
+//   .catch((err) => {
+//     return next(err);
+//   });
+// });
 
 //
 module.exports = router;
