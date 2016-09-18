@@ -5,7 +5,6 @@
 {% block content %}
   <div class="container restaurants">
     <div class="row">
-
       <div class="col-xs-offset-4 col-xs-4">
         <h2>{{reviews.length}} Review{% if reviews.length != 1 %}s{% endif %}
         </h2>
@@ -23,45 +22,80 @@
       </div>
       {% endif %}
 
-    {%for restaurant in restaurants%}
-    <div class="restaurantDiv col-xs-4">
-      <h1>{{restaurant.restaurant_name}}</h1>
-      <img class="restImg"src="{{restaurant.images}}" alt="image"/>
-      <h3>Cuisine: {{restaurant.style}}</h3>
-      <h4>{{restaurant.location}}</h4>
-      <h4>{{restaurant.rating}}</h4>
-      <!-- Success Pop Up -->
-      <div class="bs-example" id="mySuccess" style="display:none">
-        <div class="alert alert-success fade in">
-          <a href="#" class="close" data-dismiss="alert">&times;</a>
-          <strong>Success!</strong> Your restaurant has been deleted successfully.
+      {%for restaurant in restaurants%}
+      <div class="restaurantDiv col-xs-4">
+        <h1>{{restaurant.restaurant_name}}</h1>
+        <img class="restImg"src="{{restaurant.images}}" alt="image"/>
+        <h3>Cuisine: {{restaurant.style}}</h3>
+        <h4>{{restaurant.location}}</h4>
+        <h4>{{restaurant.rating}}</h4>
+        {% if admin == true %}
+        <!-- Success Pop Up -->
+        <div class="bs-example" id="mySuccess" style="display:none">
+          <div class="alert alert-success fade in">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Success!</strong> Your restaurant has been deleted successfully.
+          </div>
         </div>
-      </div>
-      <!-- Close Success Pop Up -->
-      <form action="/restaurants/update/{{restaurant.id}}"><input type="submit" class="submitLink" value="Update" /></form>
-      <form id="deleteForm"><input type="hidden" id="restID" value="{{restaurant.id}}" name="restID" /> <input type="submit" class="submitLink" value="Delete" /></form>
+        <!-- Close Success Pop Up -->
+
+        <form action="/restaurants/update/{{restaurant.id}}">
+          <input type="submit" class="submitLink" value="Update"/>
+        </form>
+        <form id="deleteForm">
+          <input type="hidden" id="restID" value="{{restaurant.id}}" name="restID" />
+          <input type="submit" class="submitLink" value="Delete"/>
+        </form>
+        <form  action="/restaurants/{{restaurant.id}}/employees/new" method="post">
+          <input type="hidden" name="id" value="{{restaurant.id}}">
+          <input type="hidden" name="name" value="{{restaurant.name}}">
+          <input class="submitLink" type="submit" name="submit" value="Add Employee">
+        </form>
       </div>
     </div>
-    {%endfor%}
+    {% endif %}
+    {% endfor %}
+    {% if admin == true %}
+    <div class="employeeDiv">
+      {% for employee in employees %}
+      <h3>Employees</h3>
+      <table class="table">
+        <thead>
+          <th>
+            Name
+          </th>
+          <th>
+            Postion
+          </th>
+          <th>
+          </th>
+        </thead>
+        <tbody>
+          <td>
+            {{employee.first_name}} {{employee.lastname}}
+          </td>
+          <td>
+            {{employee.position}}
+          </td>
+          <td>
+            <form  action="/restaurants/{{restaurants[0].id}}/employees/edit?_method=PUT" method="post">
+              <input type="hidden" name="id" value="{{employee.id}}">
+              <input type="hidden" name="first_name" value="{{employee.first_name}}">
+              <input type="hidden" name="last_name" value="{{employee.last_name}}">
+              <input type="hidden" name="position" value="{{employee.position}}">
+              <input class="submitLink" type="submit" name="submit" value="Edit Employee">
+            </form>
+            <form  action="/restaurants/{{restaurants[0].id}}/employees/delete?_method=Delete" method="post">
+              <input type="hidden" name="id" value="{{employee.id}}">
+              <input class="submitLink" type="submit" name="submit" value="Delete Employee">
+            </form>
+          </td>
+        </tbody>
+      </table>
 
-      {% for review in reviews%}
-      <h2>{{review.date}}</h2>
-      <h4>{{review.rating}}</h4>
-      <p>{{review.text}}<p>
-      <p>{{review.first_name}} {{review.last_name}}</p>
-      {% if user_id == review.user_id%}
-      <div class="">
-        <h3>
-          <form  action="/restaurants/{{restaurants[0].id}}/reviews/edit" method="post">
-            <input type="hidden" name="id" value="{{restaurants[0].id}}">
-            <input type="hidden" name="name" value="{{restaurants[0].name}}">
-            <input class="submitLink" type="submit" name="submit" value="Edit Review">
-          </form>
-        </h3>
-      </div>
-      {% endif %}
       {% endfor %}
     </div>
+    {% endif %}
     {%for restaurant in restaurants%}
     <div class="row">
       <div class="map">
@@ -70,7 +104,30 @@
       </div>
     </div>
     {% endfor %}
-  </div>
+    <div class="reviewDiv">
+      {% for review in reviews%}
+      <h2>{{review.date}}</h2>
+      <h4>{{review.rating}}</h4>
+      <p>{{review.text}}<p>
+      <p>{{review.first_name}} {{review.last_name}}</p>
+      {% if user_id == review.user_id%}
+      <div class="">
+        <h3>
+          <form  action="/restaurants/{{restaurants[0].id}}/reviews/edit?_method=PUT" method="post">
+            <input type="hidden" name="id" value="{{restaurants[0].id}}">
+            <input type="hidden" name="name" value="{{restaurants[0].name}}">
+            <input class="submitLink" type="submit" name="submit" value="Edit Review">
+          </form>
+          <form  action="/restaurants/{{restaurants[0].id}}/reviews/delete?_method=DELETE" method="post">
+            <input type="hidden" name="id" value="{{restaurants[0].id}}">
+            <input type="hidden" name="name" value="{{restaurants[0].name}}">
+            <input class="submitLink" type="submit" name="submit" value="Delete Review">
+          </form>
+        </h3>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
   <script>
   $(document).on('submit', '#deleteForm', function(event) {
     event.preventDefault();

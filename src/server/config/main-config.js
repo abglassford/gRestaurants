@@ -13,6 +13,8 @@
   const morgan = require('morgan');
   const nunjucks = require('nunjucks');
   const cookieSession = require('cookie-session');
+  const connect = require('connect');
+  const methodOverride = require('method-override');
 
   // *** view folders *** //
   const viewFolders = [
@@ -47,7 +49,7 @@
     }));
     app.use(flash());
     app.use(express.static(path.join(__dirname, '..', '..', 'client')));
-
+    app.use(methodOverride('_method'));
   };
 
 })(module.exports);
