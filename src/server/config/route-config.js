@@ -11,6 +11,7 @@
     const login = require('../routes/login');
     const reviews = require('../routes/reviews');
     const employees = require('../routes/employees');
+    const locations = require('../routes/locations');
 
     // *** register routes *** //
     app.use((req,res,next) => {
@@ -23,6 +24,7 @@
     app.use('/login', login);
     app.use('/restaurants', reviews);
     app.use('/restaurants', employees);
+    app.use('/locations', locations);
     app.use(function(err, req, res, next) {
       console.error(err.stack);
       res.status(500).send('Something broke!');
