@@ -202,5 +202,67 @@ router.post('/employees/new/:id', indexController.isAuthenticated, (req, res, ne
       return next(err);
     });
   });
+
+router.put('/employees/update/:id', indexController.isAuthenticated, (req, res, next) => {
+  const id = parseInt(req.params.id);
+  const first_name_edit = req.body.first_name;
+  const last_name_edit = req.body.last_name;
+  const position_edit = req.body.position;
+  console.log(first_name_edit);
+  console.log(last_name_edit);
+  console.log(position_edit);
+
+  knex('employees')
+  .update({
+    first_name: first_name_edit,
+    last_name: last_name_edit,
+    position: position_edit
+  })
+  .where('id', id)
+  .returning('*')
+  .then((results) => {
+    if (results.length) {
+      res.status(200).json({
+        status: 'success',
+        message: `${results[0].last_name} has been updated!`
+      });
+    } else {
+      res.status(404).json({
+        status: 'errror',
+        message: 'That id does not exist'
+      });
+    }
+  })
+  .catch((err) => {
+    return next();
+  });
+});
+
+router.delete('/employees/delete/:id', (req, res, next) => {
+  const id = parseInt(req.params.id);
+  knex('employees')
+  .del()
+  .where('id', id)
+  .returning('*')
+  .then((results) => {
+    if (results.length) {
+      res.status(200).json({
+        status: 'success',
+        message: `${results[0].last_name} is gone!`
+      });
+    } else {
+      res.status(404).json({
+        status: 'errror',
+        message: 'That id does not exist'
+      });
+    }
+  })
+  .catch((err) => {
+    res.status(500).json({
+      status: 'errror',
+      message: 'Something bad happened!'
+    });
+  });
+});
 //
 module.exports = router;
