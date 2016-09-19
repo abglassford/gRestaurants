@@ -1,9 +1,24 @@
 .restaurants {
-  margin-bottom: 100px;
-  text-align: center;
-}
 
+  text-align: center;
+  background-color: rgba(212, 255, 0, 0.55);
+  padding: 30px 30px;
+}
+.addRest{
+  margin-bottom: 15px;
+}
 .restaurantDiv {
   height: 100%;
-  text-align: left;
+  margin-top: 10px;
+}
+
+h2 {
+  margin: 3px;
+}
+
+h3 {
+  margin: 3px;
+}
+h4 {
+  margin: 3px;
 }

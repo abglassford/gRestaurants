@@ -3,8 +3,9 @@ body {
 }
 
 .pageLogo img {
-  width:100%;
-  padding:0 5%
+  margin-top: 2%;
+  width: 100%;
+  border-radius: 0px;
 }
 
 .restImg {
