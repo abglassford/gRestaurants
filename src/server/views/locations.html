@@ -8,16 +8,26 @@
 
 {% block content %}
 
-  <div id="floating-panel">
-    <button id="drop" onclick="drop()">Show All Locations</button>
-  </div>
-  <div id="map"></div>
+    <div id="floating-panel">
+      <button id="drop" onclick="drop()">Show All Locations</button>
+    </div>
+    <div class="restList">
+      <h3>Restaurants</h3>
+      <ul>
+        {% for restaurant in restaurants %}
+          <li>{{restaurant.restaurant_name}}</li>
+        {% endfor%}
+      </ul>
+    </div>
+    <div id="map"></div>
+
   <script>
     var neighborhoods = [
-      {lat: 52.511, lng: 13.447},
-      {lat: 52.549, lng: 13.422},
-      {lat: 52.497, lng: 13.396},
-      {lat: 52.517, lng: 13.394}
+      {lat: 39.763916, lng: -105.016073},
+      {lat: 39.757829, lng: -104.986099},
+      {lat: 39.744932, lng: -104.980582},
+      {lat: 39.744442, lng: -104.990765},
+      {lat: 39.740126, lng: -104.948829}
     ];
 
     var markers = [];
@@ -25,8 +35,8 @@
 
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: {lat: 39.7, lng: -104.9}
+        zoom: 11,
+        center: {lat: 39.75, lng: -104.9}
       });
     }
 
@@ -54,4 +64,5 @@
       markers = [];
     }
   </script>
+
 {% endblock %}
