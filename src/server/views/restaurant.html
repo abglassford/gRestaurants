@@ -3,17 +3,13 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-  <div class="container restaurants">
-    <div class="row">
-      <div class="col-xs-offset-4 col-xs-4">
-        <h2>{{reviews.length}} Review{% if reviews.length != 1 %}s{% endif %}
-        </h2>
-      </div>
 
+  <div class="container restaurants">
+    <div class="row restaurant">
       {% if admin == false %}
-      <div class="col-xs-4">
+      <div>
         <h3>
-          <form  action="/restaurants/{{restaurants[0].id}}/reviews/new" method="get">
+          <form action="/restaurants/{{restaurants[0].id}}/reviews/new" method="get">
             <input type="hidden" name="id" value="{{restaurants[0].id}}">
             <input type="hidden" name="name" value="{{restaurants[0].name}}">
             <input class="submitLink" type="submit" name="submit" value="Add Review">
@@ -21,9 +17,8 @@
         </h3>
       </div>
       {% endif %}
-
       {%for restaurant in restaurants%}
-      <div class="restaurantDiv col-xs-4">
+      <div class="restaurantDiv col-xs-6">
         <h1>{{restaurant.restaurant_name}}</h1>
         <img class="restImg"src="{{restaurant.images}}" alt="image"/>
         <h3>Cuisine: {{restaurant.style}}</h3>
@@ -52,25 +47,75 @@
           <input class="submitLink" type="submit" name="submit" value="Add Employee">
         </form>
       </div>
-    </div>
     {% endif %}
     {% endfor %}
+    </div>
+    <div class="row">
+      <div class="reviewDiv">
+        {% for review in reviews%}
+        <h2>{{review.date}}</h2>
+        <h4>{{review.rating}}</h4>
+        <p>{{review.text}}<p>
+        <p>{{review.first_name}} {{review.last_name}}</p>
+        {% if user_id == review.user_id%}
+        <div class="">
+          <h3>
+            <form  action="/restaurants/{{restaurants[0].id}}/reviews/edit?_method=PUT" method="post">
+              <input type="hidden" name="id" value="{{restaurants[0].id}}">
+              <input type="hidden" name="name" value="{{restaurants[0].name}}">
+              <input class="submitLink" type="submit" name="submit" value="Edit Review">
+            </form>
+            <form  action="/restaurants/{{restaurants[0].id}}/reviews/delete?_method=DELETE" method="post">
+              <input type="hidden" name="id" value="{{restaurants[0].id}}">
+              <input type="hidden" name="name" value="{{restaurants[0].name}}">
+              <input class="submitLink" type="submit" name="submit" value="Delete Review">
+            </form>
+          </h3>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Add Employee Modal -->
+    <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h1>Add New Employee</h1>
+            <form id="modal-employee-form" action="/restaurants/employees/new/{{restaurants[0].id}}" method="POST">
+              <div class="form-group">
+                <label for="first_name">First Name:</label>
+                <input type="text" class="form-control" name="first_name" id="first_name">
+              </div>
+              <div class="form-group">
+                <label for="last_name">Last Name:</label>
+                <input type="text" class="form-control" name="last_name" id="last_name">
+              </div>
+              <div class="form-group">
+                <label for="position">Position:</label>
+                <input type="text" class="form-control" name="position" id="position">
+              </div>
+              <input type="hidden" name="id" id="form-id">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
     {% if admin == true %}
     <div class="employeeDiv">
 
       <h3>Employees</h3>
       <table class="table">
         <thead>
-          <th>
-            Name
-          </th>
-          <th>
-            Postion
-          </th>
-          <th>
-          </th>
+          <th>Name</th>
+          <th>Postion</th>
         </thead>
         <tbody>
+
           {% for employee in employees %}
           <tr>
           <td>
@@ -79,6 +124,7 @@
           <td>
             {{employee.position}}
           </td>
+
           <td>
           <a href="#" class="edit-employee-link" style="color:blue; text-decoration:underline;" data-id="{{employee.id}}" data-first_name="{{employee.first_name}}" data-last_name="{{employee.last_name}}" data-position="{{employee.position}}">Edit Employee</a>
           <br>
@@ -89,6 +135,7 @@
         </tbody>
       </table>
 
+      {% endfor %}
 
     </div>
     {% endif %}
@@ -97,59 +144,6 @@
       <div class="map">
         <iframe width="250" height="250" frameborder="0" style="border:0" src={{restaurant.map}}>
         </iframe>
-      </div>
-    </div>
-    {% endfor %}
-    <div class="reviewDiv">
-      {% for review in reviews%}
-      <h2>{{review.date}}</h2>
-      <h4>{{review.rating}}</h4>
-      <p>{{review.text}}<p>
-      <p>{{review.first_name}} {{review.last_name}}</p>
-      {% if user_id == review.user_id%}
-      <div class="">
-        <h3>
-          <form  action="/restaurants/{{restaurants[0].id}}/reviews/edit?_method=PUT" method="post">
-            <input type="hidden" name="id" value="{{restaurants[0].id}}">
-            <input type="hidden" name="name" value="{{restaurants[0].name}}">
-            <input class="submitLink" type="submit" name="submit" value="Edit Review">
-          </form>
-          <form  action="/restaurants/{{restaurants[0].id}}/reviews/delete?_method=DELETE" method="post">
-            <input type="hidden" name="id" value="{{restaurants[0].id}}">
-            <input type="hidden" name="name" value="{{restaurants[0].name}}">
-            <input class="submitLink" type="submit" name="submit" value="Delete Review">
-          </form>
-        </h3>
-      </div>
-      {% endif %}
-      {% endfor %}
-    </div>
-  </div>
-
-  <!-- Add Employee Modal -->
-  <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <h1>Add New Employee</h1>
-          <form id="modal-employee-form" action="/restaurants/employees/new/{{restaurants[0].id}}" method="POST">
-            <div class="form-group">
-              <label for="first_name">First Name:</label>
-              <input type="text" class="form-control" name="first_name" id="first_name">
-            </div>
-            <div class="form-group">
-              <label for="last_name">Last Name:</label>
-              <input type="text" class="form-control" name="last_name" id="last_name">
-            </div>
-            <div class="form-group">
-              <label for="position">Position:</label>
-              <input type="text" class="form-control" name="position" id="position">
-            </div>
-            <input type="hidden" name="id" id="form-id">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-          </form>
-        </div>
       </div>
     </div>
   </div>
@@ -181,6 +175,7 @@
       </div>
     </div>
   </div>
+
 
 
 
