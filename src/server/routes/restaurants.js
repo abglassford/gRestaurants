@@ -27,6 +27,7 @@ function mapShow (name) {
 
 router.get('/new', (req, res, next) => {
   const renderObject = req.renderObject;
+  renderObject.session = req.session.user || null;
   res.render('new_restaurant', renderObject);
 });
 
@@ -79,6 +80,7 @@ router.get('/update/:id', indexController.isAuthenticated, function (req, res, n
   const renderObject = req.renderObject;
   const restaurantId = req.params.id;
   renderObject.title = 'Restaurants';
+  renderObject.session = req.session.user || null;
   knex('restaurants')
   .where('id', restaurantId)
   .then((data) => {
