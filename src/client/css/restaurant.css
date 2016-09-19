@@ -1,12 +1,21 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.restImg {
+  width: 450px;
+  height: auto;
+  border-radius: 20px;
 }
-.restaurantDiv{
-  height: 100%;
-  margin-bottom: 150px;
+
+.restaurantDiv {
+  height: 100%
+}
+
+.adminDiv {
+  margin-bottom: 20px;
+}
+
+.restandrev {
+  margin-bottom: 20px;
 }
