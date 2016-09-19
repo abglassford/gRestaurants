@@ -107,7 +107,7 @@
     </div>
     {% if admin == true %}
     <div class="employeeDiv">
-
+      {% for employee in employees %}
       <h3>Employees</h3>
       <table class="table">
         <thead>
@@ -115,28 +115,24 @@
           <th>Postion</th>
         </thead>
         <tbody>
-
-          {% for employee in employees %}
-          <tr>
+          <td>{{employee.first_name}} {{employee.lastname}}</td>
+          <td>{{employee.position}}</td>
           <td>
-            {{employee.first_name}} {{employee.lastname}}
+            <form  action="/restaurants/{{restaurants[0].id}}/employees/edit?_method=PUT" method="post">
+              <input type="hidden" name="id" value="{{employee.id}}">
+              <input type="hidden" name="first_name" value="{{employee.first_name}}">
+              <input type="hidden" name="last_name" value="{{employee.last_name}}">
+              <input type="hidden" name="position" value="{{employee.position}}">
+              <input class="submitLink" type="submit" name="submit" value="Edit Employee">
+            </form>
+            <form  action="/restaurants/{{restaurants[0].id}}/employees/delete?_method=Delete" method="post">
+              <input type="hidden" name="id" value="{{employee.id}}">
+              <input class="submitLink" type="submit" name="submit" value="Delete Employee">
+            </form>
           </td>
-          <td>
-            {{employee.position}}
-          </td>
-
-          <td>
-          <a href="#" class="edit-employee-link" style="color:blue; text-decoration:underline;" data-id="{{employee.id}}" data-first_name="{{employee.first_name}}" data-last_name="{{employee.last_name}}" data-position="{{employee.position}}">Edit Employee</a>
-          <br>
-          <a href="#" class="delete-employee-link" style="color:blue; text-decoration:underline;" data-id="{{employee.id}}" data-first_name="{{employee.first_name}}" data-last_name="{{employee.last_name}}" data-position="{{employee.position}}">Delete Employee</a>
-          </td>
-        </tr>
-          {% endfor %}
         </tbody>
       </table>
-
       {% endfor %}
-
     </div>
     {% endif %}
     {%for restaurant in restaurants%}
@@ -147,36 +143,31 @@
       </div>
     </div>
   </div>
+    {% endfor %}
 
-  <!-- Edit Employee Modal -->
-  <div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <h1>Edit Employee</h1>
-          <form id="modal-employee-edit-form">
-            <div class="form-group">
-              <label for="first_name_edit">First Name:</label>
-              <input type="text" class="form-control" name="first_name_edit" id="first_name_edit">
-            </div>
-            <div class="form-group">
-              <label for="last_name_edit">Last Name:</label>
-              <input type="text" class="form-control" name="last_name_edit" id="last_name_edit">
-            </div>
-            <div class="form-group">
-              <label for="position_edit">Position:</label>
-              <input type="text" class="form-control" name="position_edit" id="position_edit">
-            </div>
-            <input type="hidden" name="id_edit" id="id_edit">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
+  <script>
+    $(document).on('submit', '#deleteForm', function(event) {
+      event.preventDefault();
+      const id = $('#restID').val();
+      $.ajax({
+        type: 'DELETE',
+        url: `/restaurants/delete/${id}`
+      })
+      .done((data) => {
+        $('#mySuccess').toggle();
+        setTimeout(function() {
+          window.location.href = "../../restaurants";
+        }, 1000);
+        console.log(data);
+      })
+      .fail((err) => {
+        console.log(err);
+      });
+    });
+  $(document).on('submit', '#addEmployee', function(event) {
+    event.preventDefault();
+    $('#addEmployeeModal').modal('toggle')
+  });
+  </script>
 
 {% endblock %}
