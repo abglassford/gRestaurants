@@ -1,5 +1,10 @@
 body {
   font: 14px 'Montserrat', Helvetica, Arial, sans-serif;
+  background-color: rgba(80, 80, 80, 0.16)
+}
+
+img {
+  border-radius: 10px;
 }
 
 a {
@@ -25,7 +30,6 @@ nav {
   margin-top: 0px;
   height: 100px;
   background-color: rgb(102, 180, 168);
-  margin-bottom: 2rem;
 }
 
 nav ul {
@@ -49,7 +53,6 @@ nav .wrapper {
 
 footer {
  background-color: black;
- margin-top: 2.5rem;
  margin-bottom: 0px;
 }
 

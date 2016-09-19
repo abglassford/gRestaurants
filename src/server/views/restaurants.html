@@ -9,6 +9,11 @@
 {% block content %}
 
   <div class="restaurants container">
+    {%if admin == true%}
+    <div class="row addRest">
+      <h2 class="btn btn-default"><a href="/restaurants/new">Add Restaurant</a></h2>
+    </div>
+    {%endif%}
       {%for restaurant in data%}
     <div class="restaurantDiv col-xs-4">
       <a href="/restaurants/{{restaurant.id}}" class="restaurantLink"><img class="restImg"src="{{restaurant.images}}" alt="image" /></a>
