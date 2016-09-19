@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80211,
-          images: 'https://lh5.googleusercontent.com/-muCMjyLccbM/V3gUZoU9wCI/AAAAAAAB1-k/FNP58QNEqeQPlLL9WHON1SwXVRYI9E2eQCLIB/s544-k-no/',
+          images: 'https://static.pexels.com/photos/3329/food-kitchen-cutting-board-cooking.jpg',
           description: 'Creative local farm-to-fork New American cuisine in a warm, rustic, continually packed space. '
         }),
         knex('restaurants').insert({
@@ -23,7 +23,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80211,
-          images: 'http://oldmajordenver.com/wp-content/uploads/2013/03/OM_Outside_32.jpg',
+          images: 'https://static.pexels.com/photos/5317/food-salad-restaurant-person.jpg',
           description: 'Rustic-chic restaurant specializing in elevated dishes from sustainable sources & top-shelf drinks.'
         }),
         knex('restaurants').insert({
@@ -33,7 +33,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80211,
-          images: 'http://www.rootdowndenver.com/wp-content/gallery/restaurant3/thumbs/thumbs_01.jpg',
+          images: 'https://static.pexels.com/photos/5938/food-salad-healthy-lunch.jpg',
           description: 'A converted filling station is an artful, high-energy venue for creative American small plates.'
         }),
         knex('restaurants').insert({
@@ -43,7 +43,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80211,
-          images: 'https://lh4.googleusercontent.com/-sJudNgZt1s0/UrNsZQtJ16I/AAAAAAAD6oM/nkWsSFJCnR85pZzzA-5MzQLWFavqytwjQ/s408-k-no/',
+          images: 'https://static.pexels.com/photos/62097/pexels-photo-62097.jpeg',
           description: 'This old mortuary is now a lively restaurant with a rooftop lounge & global small plates.'
         }),
         knex('restaurants').insert({
@@ -53,7 +53,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80205,
-          images: 'http://static1.squarespace.com/static/5659b8ade4b00f188f425de4/57573fa5d51cd4210e964100/57573fa5d51cd4210e964101/1452878529783/Aloy+Modern+doorway+large.jpg?format=500w',
+          images: 'https://static.pexels.com/photos/41123/pexels-photo-41123.jpeg',
           description: 'Contemporary Thai fare, complemented by craft beer, wine & cocktails, served in stylish surrounds.'
         }),
         knex('restaurants').insert({
@@ -63,7 +63,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80205,
-          images: 'http://workandclassdenver.com/images/OurName_MastHead.jpg',
+          images: 'https://static.pexels.com/photos/5205/food-healthy-vegetables-potatoes.jpg',
           description: 'Relaxed & cozy location serving homestyle Southern & Latin American cuisine, plus cocktails.'
         }),
         knex('restaurants').insert({
@@ -73,7 +73,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80205,
-          images: 'https://lh5.googleusercontent.com/-5MgSRFG3tWE/VxqMvRGYqQI/AAAAAAAAAIg/bDBcsMwTIT8Jp3ifNjBg4t-Os5_NpMXMQCLIB/s455-k-no/',
+          images: 'https://static.pexels.com/photos/5876/food-salad-healthy-vegetables.jpg',
           description: 'Refined sandwiches, seasonal Italian dinners & a deli case in a small & artsy, rustic-modern space.'
         }),
         knex('restaurants').insert({
@@ -83,7 +83,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80205,
-          images: 'https://lh5.googleusercontent.com/-HejjUNzaCYg/VvCzQ7jYuyI/AAAAAAAAHlg/kQqNAxvDDtc-VrWiFJcwiYvSqDsEYobdQ/s415-k-no/',
+          images: 'https://static.pexels.com/photos/8572/food-chicken-meat-outdoors.jpg',
           description: 'Curry dishes dominate the menu at this Indian spot with compact quarters & brightly hued decor.'
         }),
         knex('restaurants').insert({
@@ -93,7 +93,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80203,
-          images: 'https://lh4.googleusercontent.com/-Pvj2XmLWPmc/VczfKRj-kRI/AAAAAAAAACE/cMRZsadiLsoSqhBmgzQnQ1vgkVjwkaDrg/s408-k-no/',
+          images: 'https://static.pexels.com/photos/33307/carrot-kale-walnuts-tomatoes.jpg',
           description: 'Classic regional American favorites & cocktails make up the menu at this buzzing, retro-style diner.'
         }),
         knex('restaurants').insert({
@@ -103,7 +103,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80202,
-          images: 'http://media.yardhouse.com/en_us/images/marketing/lakewood-co-yard-house-599x430.jpg.jpg',
+          images: 'https://static.pexels.com/photos/131044/pexels-photo-131044.jpeg',
           description: 'High-end sports-bar chain with a huge menu of New American fare & an extensive list of draft beers.'
         }),
         knex('restaurants').insert({
@@ -113,7 +113,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80218,
-          images: 'https://lh5.googleusercontent.com/proxy/JfC2lnMRQ1Zht2-AKMftmYgLZgrgmy_DAKsbmIg4t9b6rQNHqe-w0CqRiB9ynzWVcvyDIHixiiaaXIib48sBGAdQUhx6XR6PfjU01Aombiz7ZxobPHPJWWJ4MaacR-a8a2dMpV0xguAxOeRqGesDhdc5A1UxkA=w455-h256',
+          images: 'https://static.pexels.com/photos/5249/bread-food-restaurant-people.jpg',
           description: 'Sophisticated American bar & grill for elevated pub-grub classics such as Reuben fries.'
         }),
         knex('restaurants').insert({
@@ -123,7 +123,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80202,
-          images: 'http://svcdn.simpleviewinc.com/v3/cache/www_denver_org/F223DBAABE551426997C02AE0614865C.jpg',
+          images: 'https://static.pexels.com/photos/5122/food-healthy-man-person.jpeg',
           description: 'American pub-grub purveyor housed in the Paramount Theatre that has a lively sports-bar-like scene.'
         }),
         knex('restaurants').insert({
@@ -133,7 +133,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80202,
-          images: 'https://media-cdn.tripadvisor.com/media/photo-s/02/06/74/9d/delectable-egg.jpg',
+          images: 'https://static.pexels.com/photos/86753/pexels-photo-86753.jpeg',
           description: 'Bright, casual dinerlike branch of a 1982 local chain specializing in American breakfasts & lunches.'
         }),
         knex('restaurants').insert({
@@ -143,7 +143,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80202,
-          images: 'https://livinitupdenver.files.wordpress.com/2011/10/imag0526.jpg',
+          images: 'https://static.pexels.com/photos/26799/pexels-photo-26799.jpg',
           description: 'American fare plus people-watching from the clubby dining room & sidewalk seats.'
         }),
         knex('restaurants').insert({
@@ -153,7 +153,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80202,
-          images: 'http://denver.thedrinknation.com/images/bars/EuclidHallDenver.jpg',
+          images: 'https://static.pexels.com/photos/104987/pexels-photo-104987.jpeg',
           description: 'High-concept eclectic bar bites & a carefully sourced beer list in an industrial-modern pub setting.'
         }),
         knex('restaurants').insert({
@@ -163,7 +163,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80202,
-          images: 'http://www.milehighhappyhour.com/wp-content/uploads/2013/11/Cholon-1000x500.jpg',
+          images: 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg',
           description: 'Chef Lon Symensma puts together an elegant Southeast Asian menu at this sleek dining destination.'
         }),
         knex('restaurants').insert({
@@ -173,7 +173,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80218,
-          images: 'http://theparktaverndenver.com/wp-content/uploads/2014/05/Picture-018.jpg',
+          images: 'https://static.pexels.com/photos/2215/food-salad-healthy-vegetables.jpg',
           description: 'Drink specials & all-day comfort food draw a younger crowd to this neighborhood watering hole.'
         }),
         knex('restaurants').insert({
@@ -183,7 +183,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80206,
-          images: 'http://2.bp.blogspot.com/-JIKwcSgIWng/UWnTMOto3OI/AAAAAAAAA0M/wAzi_8gnlYo/s1600/IMG_5627.JPG',
+          images: 'https://static.pexels.com/photos/8758/food-dinner-lemon-rice.jpg',
           description: 'Jazzy little trattoria serving classic & creative fare, plus brunch & happy hour on the roof deck.'
         }),
         knex('restaurants').insert({
@@ -193,7 +193,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80203,
-          images: 'https://lh3.googleusercontent.com/-elykJNqsLOs/VNvZbJPrpTI/AAAAAAAAAAc/H9-6Yh555MwaqUESWUPVtoDrdQ1uuXJHA/s408-k-no/',
+          images: 'https://static.pexels.com/photos/104985/pexels-photo-104985.jpeg',
           description: 'Cozy sibling-run eatery known for carefully sourced contemporary American cuisine & a boutique bar.'
         }),
         knex('restaurants').insert({
@@ -203,7 +203,7 @@ exports.seed = function(knex, Promise) {
           city: 'Denver',
           state: 'CO',
           zip: 80206,
-          images: 'http://diningout.com/denverboulder/wp-content/uploads/sites/13/2015/06/Mezcal.jpg',
+          images: 'https://static.pexels.com/photos/6461/food-plate-rucola-salad.jpg',
           description: 'Homestyle Mexican eats, margaritas & a long tequila list in a high-energy dining room.'
         })
       ]);

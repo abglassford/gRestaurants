@@ -12,6 +12,7 @@
   "dependencies": {
     "bcrypt": "^0.8.7",
     "body-parser": "~1.15.1",
+    "connect": "^3.5.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
     "cookie-session": "^2.0.0-alpha.1",
@@ -43,6 +44,5 @@
     "mocha-jshint": "^2.3.1",
     "run-sequence": "^1.2.2",
     "tiny-lr": "^0.2.1"
-
   }
 }

@@ -162,28 +162,45 @@ router.post('/new', validation.verify, indexController.isAuthenticated, (req, re
 });
 
 router.delete('/delete/:id', (req, res, next) => {
-  const id = parseInt(req.params.id);
-  knex('restaurants')
-  .del()
-  .where('id', id)
-  .returning('*')
-  .then((results) => {
-    if (results.length) {
-      res.status(200).json({
-        status: 'success',
-        message: `Restaurant is gone!`
-      });
-    } else {
-      res.status(404).json({
-        status: 'errror',
-        message: 'That restaurant id does not exist'
-      });
-    }
-  })
-  .catch((err) => {
-    return next(err);
+    const id = parseInt(req.params.id);
+    return knex('reviews').del().where('restaurant_id', id)
+  .then(() => {
+      return knex('employees').del().where('restaurant_id', id);
+    })
+    .then(() => {
+      return knex('restaurants').del().where('id', id);
+    })
+    .then(() => {
+        res.status(200).json({
+          status: 'success',
+          message: `Restaurant is gone!`
+        });
+      })
+    .catch((err) => {
+      return next(err);
+    });
   });
-});
 
+router.post('/employees/new/:id', indexController.isAuthenticated, (req, res, next) => {
+    // grab the values to add to the db via req.body
+    const id = parseInt(req.params.id); //id is restaurant_id
+    const first_name = req.body.first_name;
+    const last_name = req.body.last_name;
+    const position = req.body.position;
+    // add values to database
+    knex('employees').insert({
+      restaurant_id: id,
+      first_name: first_name,
+      last_name: last_name,
+      position: position
+    })
+    .then((results) => {
+      // redirect user
+      res.redirect(`/restaurants/${id}`);
+    })
+    .catch((err) => {
+      return next(err);
+    });
+  });
 //
 module.exports = router;
