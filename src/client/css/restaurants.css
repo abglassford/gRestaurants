@@ -1,8 +1,9 @@
 .restaurants {
   margin-bottom: 100px;
+  text-align: center;
 }
 
 .restaurantDiv {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  height: 100%;
+  text-align: left;
 }

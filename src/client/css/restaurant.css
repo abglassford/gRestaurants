@@ -7,3 +7,15 @@ body {
   height: auto;
   border-radius: 20px;
 }
+
+.restaurantDiv {
+  height: 100%
+}
+
+.adminDiv {
+  margin-bottom: 20px;
+}
+
+.restandrev {
+  margin-bottom: 20px;
+}
