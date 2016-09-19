@@ -11,7 +11,7 @@
     <div class="row restandrev">
       <div class="row restaurant col-xs-6">
         {%for restaurant in restaurants%}
-        <div class="restaurantDiv">          
+        <div class="restaurantDiv">
           <h1>{{restaurant.restaurant_name}}</h1>
           {%if admin == true%}
           <div class="adminRest">
@@ -91,11 +91,14 @@
           <thead>
             <th>Name</th>
             <th>Postion</th>
-            <th><form id="addEmployee">
+            <th>
+              {%for restaurant in restaurants%}
+              <form id="addEmployee">
               <input type="hidden" name="id" value="{{restaurant.id}}">
               <input type="hidden" name="name" value="{{restaurant.name}}">
               <input class="submitLink" type="submit" name="submit" value="Add Employee">
             </form>
+            {% endfor %}
           </th>
           </thead>
         {% for employee in employees %}
@@ -103,17 +106,9 @@
             <td>{{employee.first_name}} {{employee.lastname}}</td>
             <td>{{employee.position}}</td>
             <td>
-              <form  action="/restaurants/{{restaurants[0].id}}/employees/edit?_method=PUT" method="post">
-                <input type="hidden" name="id" value="{{employee.id}}">
-                <input type="hidden" name="first_name" value="{{employee.first_name}}">
-                <input type="hidden" name="last_name" value="{{employee.last_name}}">
-                <input type="hidden" name="position" value="{{employee.position}}">
-                <input class="submitLink" type="submit" name="submit" value="Edit Employee">
-              </form>
-              <form  action="/restaurants/{{restaurants[0].id}}/employees/delete?_method=Delete" method="post">
-                <input type="hidden" name="id" value="{{employee.id}}">
-                <input class="submitLink" type="submit" name="submit" value="Delete Employee">
-              </form>
+            <a href="#" class="edit-employee-link" style="color:blue; text-decoration:underline;" data-id="{{employee.id}}" data-first_name="{{employee.first_name}}" data-last_name="{{employee.last_name}}" data-position="{{employee.position}}">Edit Employee</a>
+            <br>
+            <a href="#" class="delete-employee-link" style="color:blue; text-decoration:underline;" data-id="{{employee.id}}" data-first_name="{{employee.first_name}}" data-last_name="{{employee.last_name}}" data-position="{{employee.position}}">Delete Employee</a>
             </td>
           </tbody>
           {% endfor %}
@@ -152,29 +147,33 @@
     </div>
   </div>
 
-  <script>
-    $(document).on('submit', '#deleteForm', function(event) {
-      event.preventDefault();
-      const id = $('#restID').val();
-      $.ajax({
-        type: 'DELETE',
-        url: `/restaurants/delete/${id}`
-      })
-      .done((data) => {
-        $('#mySuccess').toggle();
-        setTimeout(function() {
-          window.location.href = "../../restaurants";
-        }, 1000);
-        console.log(data);
-      })
-      .fail((err) => {
-        console.log(err);
-      });
-    });
-  $(document).on('submit', '#addEmployee', function(event) {
-    event.preventDefault();
-    $('#addEmployeeModal').modal('toggle')
-  });
-  </script>
+  <!-- Edit Employee Modal -->
+  <div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h1>Edit Employee</h1>
+          <form id="modal-employee-edit-form">
+            <div class="form-group">
+              <label for="first_name_edit">First Name:</label>
+              <input type="text" class="form-control" name="first_name_edit" id="first_name_edit">
+            </div>
+            <div class="form-group">
+              <label for="last_name_edit">Last Name:</label>
+              <input type="text" class="form-control" name="last_name_edit" id="last_name_edit">
+            </div>
+            <div class="form-group">
+              <label for="position_edit">Position:</label>
+              <input type="text" class="form-control" name="position_edit" id="position_edit">
+            </div>
+            <input type="hidden" name="id_edit" id="id_edit">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 {%endblock%}
