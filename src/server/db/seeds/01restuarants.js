@@ -197,7 +197,7 @@ exports.seed = function(knex, Promise) {
           description: 'Cozy sibling-run eatery known for carefully sourced contemporary American cuisine & a boutique bar.'
         }),
         knex('restaurants').insert({
-          restaurant_name: 'MEZCAL COLFAX',
+          restaurant_name: 'Mezcal Colfax',
           style: 'Mexican',
           street: '3230 E Colfax Ave',
           city: 'Denver',

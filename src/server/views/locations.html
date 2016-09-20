@@ -11,15 +11,16 @@
     <div id="floating-panel">
       <button id="drop" onclick="drop()">Show All Locations</button>
     </div>
+      <div id="map"></div>
     <div class="restList">
       <h3>Restaurants</h3>
       <ul>
-        {% for restaurant in restaurants %}
+        {%for restaurant in restaurants%}
           <li>{{restaurant.restaurant_name}}</li>
         {% endfor%}
       </ul>
     </div>
-    <div id="map"></div>
+
 
   <script>
     var neighborhoods = [
